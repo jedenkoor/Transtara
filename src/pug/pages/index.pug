@@ -1,0 +1,52 @@
+extends ../template
+
+block variables
+  - var title = 'Карта сайта'
+
+block content
+  style.
+    .title {
+      margin-bottom: 3rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      width: 50%;
+      border: 0.1rem solid var(--black-text);
+      transition: background-color .1s;
+    }
+    td:hover {
+      background-color: var(--platinum);
+    }
+    td a {
+      display: block;
+      padding: 2rem;
+      color: var(--black-text)!important;
+      text-decoration: none!important;
+      font-size: 1.6rem;
+    }
+    @media screen and (max-width: 767px) {
+      tr,
+      td {
+        display: block;
+      }
+      tr:not(:last-child) td {
+        border-bottom: none;
+      }
+      td {
+        width: 100%;
+      }
+      td a {
+        padding: 1rem;
+      }
+    }
+
+  .container.margin-section
+    h1.title Карта сайта
+    table
+      tbody
+        tr
+          td
+            a(href="main.html" target="_blank") Главная

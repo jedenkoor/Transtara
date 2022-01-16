@@ -1,0 +1,331 @@
+@import '~normalize.css';
+@import 'variables/mixins';
+@import 'variables/indents';
+
+:root {
+  --background: #ffffff;
+  --background-card: #f9f9f9;
+  --orange: #ff6300;
+  --platinum: #f0f0f0;
+  --silver: #c0c0c0;
+  --blue: #3a6ea5;
+  --black-line: #000000;
+  --black-text: #000000;
+  --white-text: #ffffff;
+  --grey-text: #c0c0c0;
+  --selection-color: rgba(255, 99, 0, 0.99);
+  --img-selection-color: rgba(255, 99, 0, 0.5);
+  --error: #ff2f54;
+}
+
+::selection {
+  color: var(--background);
+  background-color: var(--selection-color);
+}
+
+img::selection {
+  background-color: var(--img-selection-color);
+}
+
+img::-moz-selection {
+  background-color: var(--img-selection-color);
+}
+
+@media screen and (min-width: 1200px) {
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 0.2rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+}
+
+html {
+  background-color: var(--background);
+  overflow-x: hidden;
+  font-size: 10px;
+  @include more-fullhd {
+    font-size: 0.52vw;
+  }
+  &.fixed {
+    overflow: hidden;
+  }
+  &.compensate-for-scrollbar {
+    margin-right: 0.4rem;
+    @-moz-document url-prefix() {
+      margin-right: 1.7rem;
+    }
+  }
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--black-text);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  transition: opacity 0.2s;
+  overflow-x: hidden;
+}
+
+.sprite {
+  display: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 124.8rem;
+  margin: 0 auto;
+  padding: $padding-container;
+  @include w767 {
+    padding: $mobile-padding-container;
+  }
+}
+
+.margin-section {
+  margin-bottom: $margin-section;
+  @include w767 {
+    margin-bottom: $mobile-margin-section;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+ul,
+ol {
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:not([class]) {
+    margin-left: 0.4rem;
+    color: var(--orange);
+    @include hover {
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+    @include active {
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 5.2rem;
+  font-weight: bold;
+  font-size: 3.6rem;
+  line-height: 1.44;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 0.4rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  path {
+    transition: 0.2s;
+  }
+}
+
+.primary-btn {
+  background: var(--orange);
+  color: var(--background);
+  path {
+    &[fill] {
+      fill: var(--background);
+    }
+    &[stroke] {
+      stroke: var(--background);
+    }
+  }
+}
+
+.secondary-btn {
+  background: var(--platinum);
+  color: var(--black-text);
+  path {
+    &[fill] {
+      fill: var(--black-text);
+    }
+    &[stroke] {
+      stroke: var(--black-text);
+    }
+  }
+}
+
+.tertiary-btn {
+  background: var(--blue);
+  color: var(--background);
+  path {
+    &[fill] {
+      fill: var(--background);
+    }
+    &[stroke] {
+      stroke: var(--background);
+    }
+  }
+}
+
+.input {
+  &-block {
+    position: relative;
+    label {
+      position: absolute;
+      top: 0.7rem;
+      left: 1.4rem;
+      padding: 0 1rem;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.67;
+      color: var(--silver);
+      pointer-events: none;
+      transition: 0.2s;
+    }
+  }
+  &-hintreq {
+    color: var(--orange);
+  }
+}
+
+input:not([type]),
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='password'],
+textarea {
+  width: 100%;
+  border: 0.1rem solid var(--silver);
+  background: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--black-text);
+  &:not(:placeholder-shown) + label,
+  &:focus + label {
+    top: -0.9rem;
+    font-size: 1.2rem;
+  }
+  &.input-err {
+    border-color: var(--error);
+  }
+  &.input-ok {
+    border-color: var(--black-line);
+  }
+}
+
+input:not([type]),
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='password'] {
+  height: 4rem;
+  padding: 0 2.3rem;
+  border-radius: 0.4rem;
+}
+
+.select {
+  &--active {
+    .select-content {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+    }
+  }
+  &-content {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.6rem);
+    transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
+  }
+}
+
+@import 'blocks/common/header';
+@import 'blocks/common/footer';
+@import 'blocks/common/card';
+@import 'blocks/common/reviews';
+@import 'blocks/common/faq';
+@import 'blocks/common/callback';
+@import 'blocks/mainpage/banner';
+@import 'blocks/mainpage/categories';
+@import 'blocks/mainpage/promo';
+@import 'blocks/mainpage/benefits';
+@import 'blocks/mainpage/leaders';
+@import 'blocks/mainpage/info';
+@import 'blocks/otherpages/catalog';

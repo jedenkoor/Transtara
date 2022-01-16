@@ -1,0 +1,23 @@
+.leaders {
+  &__title {
+    margin-bottom: 7.7rem;
+    padding-bottom: 5.2rem;
+    border-bottom: 0.3rem solid var(--black-line);
+  }
+  &__bot {
+    padding: 7.2rem 3.2rem;
+    border-bottom: 0.3rem solid var(--black-line);
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.8rem 0;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+    }
+  }
+}

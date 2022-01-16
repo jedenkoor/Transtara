@@ -1,0 +1,9 @@
+.catalog {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 29.3%);
+    grid-gap: 5.6rem calc((100% - 87.9%) / 2);
+    padding-left: 0;
+    list-style: none;
+  }
+}

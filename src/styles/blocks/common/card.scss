@@ -1,0 +1,71 @@
+.card {
+  position: relative;
+  &__link {
+    display: block;
+    padding-bottom: 2.4rem;
+  }
+  &__picture {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -7.2rem;
+    padding: 2.4rem 3.2rem;
+    border-bottom: 0.3rem solid var(--platinum);
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+    }
+  }
+  &__name {
+    height: 7.2rem;
+    margin-top: 2.4rem;
+    padding: 0 3.2rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__bot {
+    display: flex;
+    align-items: center;
+    padding: 0 3.2rem;
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-right: 2.4rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    span {
+      display: inline-block;
+      margin-right: 1rem;
+      font-size: 2.4rem;
+    }
+  }
+  &__buy {
+    flex: 1;
+    padding: 0.8rem 0;
+  }
+}

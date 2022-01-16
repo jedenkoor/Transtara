@@ -1,0 +1,79 @@
+.info {
+  &__reviews {
+    filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
+  }
+  &-reviews {
+    &__top {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3.2rem;
+    }
+    &__title {
+      margin-bottom: 0;
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      padding: 0.8rem 2rem;
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 1rem;
+      }
+    }
+    &__arr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      margin-left: 2.4rem;
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+    &__slide {
+      display: flex;
+      height: auto;
+      padding: 3.2rem;
+      background: var(--background);
+      border-radius: 8px;
+    }
+    &-slide {
+      &__col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        margin-right: 3.2rem;
+      }
+      &__ava {
+        width: 4.8rem;
+        height: 4.8rem;
+        margin-bottom: 1.2rem;
+        border-radius: 50%;
+      }
+      &__rate {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 2.4rem;
+        color: var(--blue);
+        svg {
+          width: 2.4rem;
+          height: 2.4rem;
+          margin-left: 0.5rem;
+        }
+      }
+      &__text {
+        font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+}

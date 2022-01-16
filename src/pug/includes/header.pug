@@ -1,0 +1,75 @@
+header.header
+  .container.header__container
+    a.header__logo(href="#") 
+      svg
+        use(xlink:href="#logo")
+    .header__info.header-info
+      .header-info__col
+        .header-info__row
+          span.header-info__name Офис
+          a.header-info__phone(href="tel:+7 (495) 973-33-92") +7 (495) 973-33-92
+        .header-info__row
+          span.header-info__text ПН-ПТ 9:00 – 18:00
+      .header-info__col
+        .header-info__row
+          span.header-info__name Склад
+        .header-info__row
+          span.header-info__text 24/6
+      button.btn.primary-btn.header-info__btn Рассчитать стоимость
+      a.btn.secondary-btn.header-info__messenger(href="#")
+        svg
+          use(xlink:href="#whatsapp")
+      a.btn.secondary-btn.header-info__messenger(href="#")
+        svg
+          use(xlink:href="#viber")
+      .header__btns
+        button.btn.secondary-btn.header__search
+          svg
+            use(xlink:href="#search")
+        ul.header__socials.header-socials
+          li.header-socials__item
+            a.header-socials__link(href="#")
+              svg
+                use(xlink:href="#tiktok")
+          li.header-socials__item
+            a.header-socials__link(href="#")
+              svg
+                use(xlink:href="#facebook")
+          li.header-socials__item
+            a.header-socials__link(href="#")
+              svg
+                use(xlink:href="#instagram")
+
+  .container
+    nav.header__nav
+      ul.header__list.header-list
+        li.header-list__item
+          button.btn.secondary-btn.header-list__btn
+            svg
+              use(xlink:href="#menu-catalog")
+            | Каталог
+        li.header-list__item
+          span.header-list__dropdown
+            svg
+              use(xlink:href="#arrow-down-red")
+            | Деревянные поддоны
+        li.header-list__item
+          span.header-list__dropdown
+            svg
+              use(xlink:href="#arrow-down-red")
+            | Пластиковые поддоны
+        li.header-list__item
+          span.header-list__dropdown
+            svg
+              use(xlink:href="#arrow-down-red")
+            | Паллетные крышки
+        li.header-list__item
+          span.header-list__dropdown
+            svg
+              use(xlink:href="#arrow-down-red")
+            | Борта
+        li.header-list__item
+          button.btn.secondary-btn.header-list__btn
+            svg
+              use(xlink:href="#menu")
+            | Меню

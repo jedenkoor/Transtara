@@ -1,0 +1,21 @@
+block variables
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(content="" name="description")
+    meta(content="" name="keywords")
+    title #{title}
+    link(href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet")
+
+  body(style="opacity: 0")
+    .sprite
+      include includes/svg-sprite.pug
+    .wrapper
+      include includes/header.pug
+      .content
+        block content
+      include includes/footer.pug

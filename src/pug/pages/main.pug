@@ -1,0 +1,248 @@
+extends ../template
+
+block variables
+  - var title = 'Главная'
+
+block content
+  section.banner.margin-section
+    .container
+      .banner__content(style="background: url('/static/images/banner.png') center right/contain no-repeat, linear-gradient(90deg, #f9f9f9 0%, #ebebeb 100%)")
+        h1.title.banner__title Продажа б/у паллетов, паллетных бортов и крышек
+        p.banner__descr В Москве и Московской области.
+        .banner__btns
+          a.btn.primary-btn.banner__btn(href="#")
+            svg
+              use(xlink:href="#banner-catalog")
+            | Посмотреть каталог
+          a.btn.secondary-btn.banner__btn(href="#")
+            svg
+              use(xlink:href="#banner-info")
+            | Как заказать?
+
+  section.categories.margin-section
+    ul.container.categories__list
+      li.categories__item
+        a.categories__link.categories-link(href="#")
+          picture.categories-link__picture
+            source(srcset="/static/images/category1.webp" type="image/webp")
+            img.categories-link__img(src="/static/images/category1.png" alt="Паллеты")
+          .categories-link__block(style="background: url('/static/images/category1-bg.svg')")
+            .btn.secondary-btn.categories-link__btn
+              svg
+                use(xlink:href="#pallety")
+              | Паллеты
+      li.categories__item
+        a.categories__link.categories-link(href="#")
+          picture.categories-link__picture
+            source(srcset="/static/images/category2.webp" type="image/webp")
+            img.categories-link__img(src="/static/images/category2.png" alt="Паллетные крышки")
+          .categories-link__block(style="background: url('/static/images/category2-bg.svg')")
+            .btn.secondary-btn.categories-link__btn
+              svg
+                use(xlink:href="#kryshki")
+              | Паллетные крышки
+      li.categories__item
+        a.categories__link.categories-link(href="#")
+          picture.categories-link__picture
+            source(srcset="/static/images/category3.webp" type="image/webp")
+            img.categories-link__img(src="/static/images/category3.png" alt="Поллетные борта")
+          .categories-link__block(style="background: url('/static/images/category3-bg.svg')")
+            .btn.secondary-btn.categories-link__btn
+              svg
+                use(xlink:href="#borta")
+              | Поллетные борта
+
+  section.promo.margin-section
+    .container
+      .promo__content(style="background: url('/static/images/promo.png') center left/contain no-repeat, linear-gradient(90deg, #EBEBEB 0%, #F9F9F9 100%)")
+        .promo__wrap
+          span.promo__tag Акция
+          h2.title.promo__title Скидка на поддоны при вывозе старых
+          p.promo__descr Заберем старые паллеты или борта и дадим скидку.
+          .promo__btns
+            a.btn.tertiary-btn.promo__btn Подробнее
+              svg
+                use(xlink:href="#promo-arrow")
+            a.btn.secondary-btn.promo__btn Скупка поддонов
+
+  section.benefits.margin-section
+    ul.container.benefits__list
+      li.benefits__item.benefits-item
+        .benefits-item__decor
+          svg
+            use(xlink:href="#benefits1")
+        h3.benefits-item__title Круглосуточная доставка
+        p.benefits-item__text Мы доставляем продукцию на собственном грузовом транспорте по Москве и Московской области.
+      li.benefits__item.benefits-item
+        .benefits-item__decor
+          svg
+            use(xlink:href="#benefits2")
+        h3.benefits-item__title 22 года в сфере
+        p.benefits-item__text Большой опыт позволяет понимать потребности клиентов и говорить о надежности.
+      li.benefits__item.benefits-item
+        .benefits-item__decor
+          svg
+            use(xlink:href="#benefits3")
+        h3.benefits-item__title Соответствие ГОСТу и евро стандартам
+        p.benefits-item__text Наша продукция соответствует высоким стандартам. Максимальный срок эксплуатации — 5 лет.
+
+  section.leaders.margin-section
+    .container
+      h2.title.leaders__title Лидеры продаж
+      ul.catalog__list
+        - for (var i = 0; i < 3; i++)
+          include ../includes/card.pug
+      .leaders__bot
+        a.btn.primary-btn.leaders__btn(href="#")
+          svg
+            use(xlink:href="#banner-catalog")
+          | Посмотреть каталог
+
+  section.info.margin-section
+    .container.info__container
+      .info__item
+        h2.title.info__title Как заказать?
+        button.btn.primary-btn.info__btn Оставить заявку
+        span.info__subtext Или позвонить
+        a.info__phone(href="tel:+7 000 000 00 00") +7 000 000 00 00
+      .info__item
+        .info__icon
+          svg
+            use(xlink:href="#info-calculation")
+        h3.info__subtitle Расчет стоимости
+        p.info__text Наши сотрудники подберут для вас лучшие варианты и расчитают стоимость договора и доставки.
+      .info__item
+        .info__icon
+          svg
+            use(xlink:href="#info-payment")
+        h3.info__subtitle Договор и оплата
+        p.info__text В самое ближайшее время мы составим договор и выставим счет на оплату.
+      .info__item
+        .info__icon
+          svg
+            use(xlink:href="#info-delivery")
+        h3.info__subtitle Доставка
+        p.info__text Отгрузка товара происходит на следующий день после оплаты. Круглосуточно с ПН по СБ.
+      .info__item.info__item--reviews.info__reviews.info-reviews
+        .info-reviews__top
+          h2.title.info-reviews__title Отзывы
+          a.btn.secondary-btn.info-reviews__link(href="#")
+            svg
+              use(xlink:href="#reviews-all")
+            | Все отзывы
+          button.btn.secondary-btn.info-reviews__arr.info-reviews__arr--prev
+            svg
+              use(xlink:href="#slider-prev")
+          button.btn.secondary-btn.info-reviews__arr.info-reviews__arr--next
+            svg
+              use(xlink:href="#slider-next")
+        .swiper.info-reviews__slider.info-reviews-slider
+          .swiper-wrapper.info-reviews-slider__wrapper
+            .swiper-slide.info-reviews__slide.info-reviews-slide
+              .info-reviews-slide__col
+                img.info-reviews-slide__ava(src="/static/images/avatar.jpg" alt="")
+                span.info-reviews-slide__rate 5
+                  svg
+                    use(xlink:href="#reviews-rate")
+              p.info-reviews-slide__text А также сторонники тоталитаризма в науке функционально разнесены на независимые элементы. Кстати, базовые сценарии поведения пользователей неоднозначны и будут указаны как претенденты на роль ключевых факторов. Реализация намеченных плановых заданий требует от нас анализа системы обучения кадров.
+            .swiper-slide.info-reviews__slide.info-reviews-slide
+              .info-reviews-slide__col
+                img.info-reviews-slide__ava(src="/static/images/avatar.jpg" alt="")
+                span.info-reviews-slide__rate 4
+                  svg
+                    use(xlink:href="#reviews-rate")
+              p.info-reviews-slide__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, sint?
+            .swiper-slide.info-reviews__slide.info-reviews-slide
+              .info-reviews-slide__col
+                img.info-reviews-slide__ava(src="/static/images/avatar.jpg" alt="")
+                span.info-reviews-slide__rate 3
+                  svg
+                    use(xlink:href="#reviews-rate")
+              p.info-reviews-slide__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam asperiores, atque dicta dolor doloribus ducimus eius eos est exercitationem illo impedit magni necessitatibus nihil nostrum obcaecati omnis quisquam sapiente sint suscipit temporibus vel vero! Quam, quia soluta? Aliquid architecto aspernatur, aut dicta dolorem eos error hic illum itaque magni natus non nulla obcaecati odit perspiciatis quaerat quas quibusdam quo recusandae, voluptate! Accusantium aliquid aspernatur et facilis id nostrum nulla, odio optio porro, qui ratione, voluptas. Adipisci aliquam at cum dicta dolorem dolores dolorum et excepturi fugit id illo incidunt molestiae officiis pariatur perferendis praesentium quia quidem repudiandae, rerum ut.
+
+  section.faq.margin-section
+    .container
+      h2.title.faq__title Часто задаваемые вопросы
+      .faq__list
+        ul.faq__col
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn А поддоны не сломаются?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cum ea eveniet excepturi incidunt inventore maiores, neque ratione. Commodi distinctio esse fugiat laudantium nisi possimus repellat voluptatem. Enim harum quia quod suscipit ullam! Aut eos et harum, ipsam maxime mollitia nam pariatur porro quia reiciendis. Distinctio, doloribus esse illum ipsam iste laudantium maxime, minus mollitia nisi nobis numquam officiis, omnis repellat sapiente sed sit unde veniam voluptatibus! Harum magnam modi nisi nostrum numquam optio reiciendis similique vitae. Ab accusantium animi assumenda aut cum dolore dolorem ipsum, molestiae nisi obcaecati odio, officiis quibusdam repudiandae rerum voluptatibus! Assumenda dolorum labore vel voluptatibus!
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn Как быстро доставите?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn А если мне нужно срочно?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn Какой объем паллетов считается ОПТ-ом?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+        ul.faq__col
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn Я могу сам приехать и забрать заказ?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn Можно ли заказать много паллетов и одну крышку?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn Физические лица могут купить паллеты?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+          li.faq__item.faq-item.accordion
+            button.faq-item__title.accordion-btn В другие регионы страны доставляете?
+              svg
+                use(xlink:href="#accordion-arrow")
+            .faq-item__content.accordion-content
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
+  section.callback.margin-section
+    form.container.callback__content
+      .callback__item
+        .callback__col
+          h2.title.callback__title Остались вопросы?
+          p.callback__text Отправьте заявку и мы ответим на все ваши вопросы.
+        .callback__col
+          .input-block
+            input.callback__input(type="text" name="name" placeholder=" " data-required)
+            label Имя
+              span.input-hintreq *
+          .input-block
+            input.callback__input(type="tel" name="phone" placeholder=" " data-type="tel" data-required)
+            label Телефон
+              span.input-hintreq *
+          button.btn.primary-btn.callback__btn(type="submit" data-validate)
+            svg
+              use(xlink:href="#callback")
+            | Отправить
+      .callback__item
+        a.btn.secondary-btn.callback__link(href="#")
+          svg
+            use(xlink:href="#whatsapp")
+          | WhatsApp
+        a.btn.secondary-btn.callback__link(href="#")
+          svg
+            use(xlink:href="#viber")
+          | Viber
+        label.callback__label
+          input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
+          span Даю согласие на
+            a(href="#") обработку персональных данных

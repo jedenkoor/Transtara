@@ -1,0 +1,122 @@
+.footer {
+  margin-bottom: 5.2rem;
+  &__wrap {
+    padding: 3.2rem 5.2rem 5.2rem;
+    background-color: var(--background-card);
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(3, 28.8rem);
+    grid-gap: calc((100% - 28.8rem * 3) / 2);
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    &:first-child {
+      grid-row: 1 / 3;
+      .footer__list {
+        margin-bottom: auto;
+      }
+    }
+    &:last-child {
+      grid-column: 2 / 4;
+      .footer__title {
+        margin-top: auto;
+      }
+    }
+  }
+  &__title {
+    margin-bottom: 1.6rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+    color: var(--orange);
+  }
+  &__list {
+    padding: 2.9rem;
+    list-style: none;
+    border: 0.3rem solid var(--platinum);
+    border-radius: 0.8rem;
+  }
+  &-list {
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+    }
+    &__link {
+      font-weight: 500;
+      font-size: 1.6rem;
+    }
+  }
+  &__socials {
+    display: flex;
+    margin-top: 3.2rem;
+    padding-left: 0;
+    list-style: none;
+  }
+  &-socials {
+    &__item {
+      &:not(:last-child) {
+        margin-right: 2.4rem;
+      }
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+  }
+  &__copy {
+    margin-top: 2rem;
+    margin-left: 0.8rem;
+    padding-top: 2.1rem;
+    border-top: 0.3rem solid var(--platinum);
+    font-size: 1.6rem;
+    color: var(--silver);
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.9rem;
+    border: 0.3rem solid var(--platinum);
+    border-radius: 0.8rem;
+  }
+  &__col {
+    flex: 0 0 25.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__link {
+    display: flex;
+    font-size: 1.6rem;
+    & + & {
+      margin-top: 1.6rem;
+    }
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      flex-shrink: 0;
+      margin-right: 1.6rem;
+    }
+  }
+  &__terms {
+    order: 2;
+    padding: 0.8rem 3.2rem;
+    background: var(--platinum);
+    border-radius: 0.4rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    & + .footer__list {
+      padding-bottom: 3.2rem;
+      border-radius: 0.8rem 0.8rem 0 0;
+      border-bottom: 0;
+    }
+  }
+}
