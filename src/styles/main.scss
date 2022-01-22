@@ -6,16 +6,20 @@
   --background: #ffffff;
   --background-card: #f9f9f9;
   --orange: #ff6300;
+  --orange-hover: #da5500;
+  --orange-click: #993b00;
   --platinum: #f0f0f0;
   --silver: #c0c0c0;
   --blue: #3a6ea5;
+  --blue-hover: #004e98;
+  --blue-click: #002e5a;
   --black-line: #000000;
   --black-text: #000000;
   --white-text: #ffffff;
   --grey-text: #c0c0c0;
   --selection-color: rgba(255, 99, 0, 0.99);
   --img-selection-color: rgba(255, 99, 0, 0.5);
-  --error: #ff2f54;
+  --error: red;
 }
 
 ::selection {
@@ -74,7 +78,6 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
   transition: opacity 0.2s;
-  overflow-x: hidden;
 }
 
 .sprite {
@@ -115,7 +118,7 @@ body {
   box-sizing: border-box;
 }
 
-*:focus {
+*:focus-visible {
   outline: none;
 }
 
@@ -126,7 +129,7 @@ ol {
 
 p {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
   &:last-child {
     margin-bottom: 0;
   }
@@ -135,7 +138,10 @@ p {
 a {
   color: inherit;
   text-decoration: none;
-  &:not([class]) {
+  transition: color 0.2s;
+  &:not([class]),
+  &[class='focus-visible'],
+  &[class=''] {
     margin-left: 0.4rem;
     color: var(--orange);
     @include hover {
@@ -143,10 +149,14 @@ a {
       &:focus {
         text-decoration: underline;
       }
+      &:active {
+        color: var(--orange-click);
+      }
     }
     @include active {
       &:active {
         text-decoration: underline;
+        color: var(--orange-click);
       }
     }
   }
@@ -207,12 +217,19 @@ input[type='number'] {
 .primary-btn {
   background: var(--orange);
   color: var(--background);
-  path {
-    &[fill] {
-      fill: var(--background);
+  transition: background 0.2s;
+  @include hover {
+    &:hover,
+    &:focus-visible {
+      background: var(--orange-hover);
     }
-    &[stroke] {
-      stroke: var(--background);
+    &:active {
+      background: var(--orange-click);
+    }
+  }
+  @include active {
+    &:active {
+      background: var(--orange-click);
     }
   }
 }
@@ -220,25 +237,42 @@ input[type='number'] {
 .secondary-btn {
   background: var(--platinum);
   color: var(--black-text);
+  transition: color 0.2s;
+  @include hover {
+    &:hover,
+    &:focus-visible {
+      color: var(--orange);
+    }
+    &:active {
+      color: var(--orange-click);
+    }
+  }
+  @include active {
+    &:active {
+      background: var(--blue-click);
+    }
+  }
   path {
-    &[fill] {
-      fill: var(--black-text);
-    }
-    &[stroke] {
-      stroke: var(--black-text);
-    }
+    transition: 0.2s;
   }
 }
 
 .tertiary-btn {
   background: var(--blue);
   color: var(--background);
-  path {
-    &[fill] {
-      fill: var(--background);
+  transition: background 0.2s;
+  @include hover {
+    &:hover,
+    &:focus-visible {
+      background: var(--blue-hover);
     }
-    &[stroke] {
-      stroke: var(--background);
+    &:active {
+      background: var(--blue-click);
+    }
+  }
+  @include active {
+    &:active {
+      background: var(--blue-click);
     }
   }
 }
@@ -277,7 +311,7 @@ textarea {
   font-size: 1.6rem;
   color: var(--black-text);
   &:not(:placeholder-shown) + label,
-  &:focus + label {
+  &:focus-visible + label {
     top: -0.9rem;
     font-size: 1.2rem;
   }
@@ -317,6 +351,7 @@ input[type='password'] {
 }
 
 @import 'blocks/common/header';
+@import 'blocks/common/breadcrumbs';
 @import 'blocks/common/footer';
 @import 'blocks/common/card';
 @import 'blocks/common/reviews';
@@ -328,4 +363,7 @@ input[type='password'] {
 @import 'blocks/mainpage/benefits';
 @import 'blocks/mainpage/leaders';
 @import 'blocks/mainpage/info';
+@import 'blocks/otherpages/hidetext';
+@import 'blocks/otherpages/mission';
+@import 'blocks/otherpages/history';
 @import 'blocks/otherpages/catalog';

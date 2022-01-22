@@ -1,0 +1,11 @@
+block variables
+
+ul.container.breadcrumbs
+  each crumb, index in breadcrumbs
+    li.breadcrumbs__item
+      if (index !== breadcrumbs.length - 1)
+        a.breadcrumbs__link(href="#")= crumb
+          svg
+            use(xlink:href="#breadcrumbs-arrow")
+      else
+        span.breadcrumbs__link= crumb

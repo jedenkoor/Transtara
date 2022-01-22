@@ -1,0 +1,32 @@
+section.callback.margin-section
+  form.container.callback__content
+    .callback__item
+      .callback__col
+        h2.title.callback__title Остались вопросы?
+        p.callback__text Отправьте заявку и мы ответим на все ваши вопросы.
+      .callback__col
+        .input-block
+          input.callback__input(type="text" name="name" placeholder=" " data-required)
+          label Имя
+            span.input-hintreq *
+        .input-block
+          input.callback__input(type="tel" name="phone" placeholder=" " data-type="tel" data-required)
+          label Телефон
+            span.input-hintreq *
+        button.btn.primary-btn.callback__btn(type="submit" data-validate)
+          svg
+            use(xlink:href="#callback")
+          | Отправить
+    .callback__item
+      a.btn.secondary-btn.callback__link.callback__link--whatsapp(href="#")
+        svg
+          use(xlink:href="#whatsapp")
+        | WhatsApp
+      a.btn.secondary-btn.callback__link.callback__link--viber(href="#")
+        svg
+          use(xlink:href="#viber")
+        | Viber
+      label.callback__label
+        input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
+        span Даю согласие на
+          a(href="#") обработку персональных данных

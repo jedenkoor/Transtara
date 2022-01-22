@@ -9,6 +9,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        .categories-link__btn {
+          color: var(--background);
+          background: var(--orange);
+          svg {
+            color: var(--background);
+          }
+        }
+      }
+      &:active {
+        .categories-link__btn {
+          background: var(--orange-click);
+        }
+      }
+    }
+    @include active {
+      &:active {
+        .categories-link__btn {
+          color: var(--background);
+          background: var(--orange-click);
+          svg {
+            color: var(--background);
+          }
+        }
+      }
+    }
   }
   &-link {
     &__picture {
@@ -36,10 +64,13 @@
       justify-content: center;
       width: 100%;
       padding: 0.8rem 0;
+      transition: color 0.2s, background 0.2s;
       svg {
         width: 2.4rem;
         height: 2.4rem;
         margin-right: 1rem;
+        color: var(--orange);
+        transition: color 0.2s;
       }
     }
   }

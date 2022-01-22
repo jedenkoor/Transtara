@@ -38,6 +38,21 @@
       text-align: left;
       font-weight: 600;
       font-size: 1.6rem;
+      transition: color 0.2s;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;

@@ -1,6 +1,6 @@
 header.header
   .container.header__container
-    a.header__logo(href="#") 
+    a.header__logo(href="#")
       svg
         use(xlink:href="#logo")
     .header__info.header-info
@@ -16,10 +16,10 @@ header.header
         .header-info__row
           span.header-info__text 24/6
       button.btn.primary-btn.header-info__btn Рассчитать стоимость
-      a.btn.secondary-btn.header-info__messenger(href="#")
+      a.btn.secondary-btn.header-info__messenger.header-info__messenger--whatsapp(href="#")
         svg
           use(xlink:href="#whatsapp")
-      a.btn.secondary-btn.header-info__messenger(href="#")
+      a.btn.secondary-btn.header-info__messenger.header-info__messenger--viber(href="#")
         svg
           use(xlink:href="#viber")
       .header__btns
@@ -41,35 +41,97 @@ header.header
                 use(xlink:href="#instagram")
 
   .container
-    nav.header__nav
-      ul.header__list.header-list
-        li.header-list__item
-          button.btn.secondary-btn.header-list__btn
-            svg
-              use(xlink:href="#menu-catalog")
-            | Каталог
-        li.header-list__item
-          span.header-list__dropdown
-            svg
-              use(xlink:href="#arrow-down-red")
-            | Деревянные поддоны
-        li.header-list__item
-          span.header-list__dropdown
-            svg
-              use(xlink:href="#arrow-down-red")
-            | Пластиковые поддоны
-        li.header-list__item
-          span.header-list__dropdown
-            svg
-              use(xlink:href="#arrow-down-red")
-            | Паллетные крышки
-        li.header-list__item
-          span.header-list__dropdown
-            svg
-              use(xlink:href="#arrow-down-red")
-            | Борта
-        li.header-list__item
-          button.btn.secondary-btn.header-list__btn
-            svg
-              use(xlink:href="#menu")
-            | Меню
+    .header__wrap
+      nav.header__nav
+        ul.header__list.header-list
+          li.header-list__item.header-list__item--submenu
+            a.btn.secondary-btn.header-list__btn(href="#")
+              svg
+                use(xlink:href="#menu-catalog")
+              | Каталог
+            .header-list__submenu.header-list-submenu
+              ul.header-list-submenu__list
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Деревянные поддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Пластиковые поддоны
+                li.header-list-submenu__item.header-list-submenu__item--submenu
+                  a.header-list-submenu__link(href="#") Поддоны ГОСТ
+                  ul.header-list-submenu__submenu.header-list-submenu-submenu
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Деревянные поддоны
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Пластиковые поддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Европоддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Паллетные крышки
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Паллетные борта
+          li.header-list__item.header-list__item--submenu
+            a.header-list__dropdown(href="#")
+              svg
+                use(xlink:href="#arrow-down-red")
+              | Деревянные поддоны
+            .header-list__submenu.header-list-submenu
+              ul.header-list-submenu__list
+                li.header-list-submenu__item.header-list-submenu__item--submenu
+                  a.header-list-submenu__link(href="#") Деревянные поддоны
+                  ul.header-list-submenu__submenu.header-list-submenu-submenu
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Деревянные поддоны
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Пластиковые поддоны
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Деревянные поддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Пластиковые поддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Поддоны ГОСТ
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Европоддоны
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Паллетные крышки
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Паллетные борта
+          li.header-list__item
+            a.header-list__dropdown(href="#")
+              svg
+                use(xlink:href="#arrow-down-red")
+              | Пластиковые поддоны
+          li.header-list__item
+            a.header-list__dropdown(href="#")
+              svg
+                use(xlink:href="#kryshki")
+              | Паллетные крышки
+          li.header-list__item
+            a.header-list__dropdown(href="#")
+              svg
+                use(xlink:href="#borta")
+              | Борта
+          li.header-list__item.header-list__item--submenu.header-list__item--menu
+            button.btn.secondary-btn.header-list__btn
+              svg
+                use(xlink:href="#menu")
+              | Меню
+            .header-list__submenu.header-list-submenu
+              ul.header-list-submenu__list
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Каталог
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") О нас
+                li.header-list-submenu__item.header-list-submenu__item--submenu
+                  a.header-list-submenu__link(href="#") Услуги
+                  ul.header-list-submenu__submenu.header-list-submenu-submenu
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Скупка паллетов
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Хранение паллетов хранение
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Фумигация
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Блог
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Отзывы
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Акции

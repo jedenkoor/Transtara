@@ -60,10 +60,10 @@ block content
           h2.title.promo__title Скидка на поддоны при вывозе старых
           p.promo__descr Заберем старые паллеты или борта и дадим скидку.
           .promo__btns
-            a.btn.tertiary-btn.promo__btn Подробнее
+            a.btn.tertiary-btn.promo__btn(href="#") Подробнее
               svg
                 use(xlink:href="#promo-arrow")
-            a.btn.secondary-btn.promo__btn Скупка поддонов
+            a.btn.secondary-btn.promo__btn(href="#") Скупка поддонов
 
   section.benefits.margin-section
     ul.container.benefits__list
@@ -159,90 +159,5 @@ block content
                   svg
                     use(xlink:href="#reviews-rate")
               p.info-reviews-slide__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam asperiores, atque dicta dolor doloribus ducimus eius eos est exercitationem illo impedit magni necessitatibus nihil nostrum obcaecati omnis quisquam sapiente sint suscipit temporibus vel vero! Quam, quia soluta? Aliquid architecto aspernatur, aut dicta dolorem eos error hic illum itaque magni natus non nulla obcaecati odit perspiciatis quaerat quas quibusdam quo recusandae, voluptate! Accusantium aliquid aspernatur et facilis id nostrum nulla, odio optio porro, qui ratione, voluptas. Adipisci aliquam at cum dicta dolorem dolores dolorum et excepturi fugit id illo incidunt molestiae officiis pariatur perferendis praesentium quia quidem repudiandae, rerum ut.
-
-  section.faq.margin-section
-    .container
-      h2.title.faq__title Часто задаваемые вопросы
-      .faq__list
-        ul.faq__col
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn А поддоны не сломаются?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cum ea eveniet excepturi incidunt inventore maiores, neque ratione. Commodi distinctio esse fugiat laudantium nisi possimus repellat voluptatem. Enim harum quia quod suscipit ullam! Aut eos et harum, ipsam maxime mollitia nam pariatur porro quia reiciendis. Distinctio, doloribus esse illum ipsam iste laudantium maxime, minus mollitia nisi nobis numquam officiis, omnis repellat sapiente sed sit unde veniam voluptatibus! Harum magnam modi nisi nostrum numquam optio reiciendis similique vitae. Ab accusantium animi assumenda aut cum dolore dolorem ipsum, molestiae nisi obcaecati odio, officiis quibusdam repudiandae rerum voluptatibus! Assumenda dolorum labore vel voluptatibus!
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn Как быстро доставите?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn А если мне нужно срочно?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn Какой объем паллетов считается ОПТ-ом?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-        ul.faq__col
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn Я могу сам приехать и забрать заказ?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn Можно ли заказать много паллетов и одну крышку?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn Физические лица могут купить паллеты?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-          li.faq__item.faq-item.accordion
-            button.faq-item__title.accordion-btn В другие регионы страны доставляете?
-              svg
-                use(xlink:href="#accordion-arrow")
-            .faq-item__content.accordion-content
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, vel.
-  section.callback.margin-section
-    form.container.callback__content
-      .callback__item
-        .callback__col
-          h2.title.callback__title Остались вопросы?
-          p.callback__text Отправьте заявку и мы ответим на все ваши вопросы.
-        .callback__col
-          .input-block
-            input.callback__input(type="text" name="name" placeholder=" " data-required)
-            label Имя
-              span.input-hintreq *
-          .input-block
-            input.callback__input(type="tel" name="phone" placeholder=" " data-type="tel" data-required)
-            label Телефон
-              span.input-hintreq *
-          button.btn.primary-btn.callback__btn(type="submit" data-validate)
-            svg
-              use(xlink:href="#callback")
-            | Отправить
-      .callback__item
-        a.btn.secondary-btn.callback__link(href="#")
-          svg
-            use(xlink:href="#whatsapp")
-          | WhatsApp
-        a.btn.secondary-btn.callback__link(href="#")
-          svg
-            use(xlink:href="#viber")
-          | Viber
-        label.callback__label
-          input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
-          span Даю согласие на
-            a(href="#") обработку персональных данных
+  include ../includes/fag
+  include ../includes/callback

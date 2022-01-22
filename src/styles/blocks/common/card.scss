@@ -1,8 +1,38 @@
 .card {
   position: relative;
+  @include hover {
+    &:hover {
+      .card__top {
+        border-color: var(--orange);
+      }
+      .card__buy {
+        color: var(--background);
+        background: var(--orange);
+      }
+    }
+  }
   &__link {
     display: block;
     padding-bottom: 2.4rem;
+    @include hover {
+      &:focus-visible {
+        .card__top {
+          border-color: var(--orange);
+        }
+      }
+      &:active {
+        .card__top {
+          border-color: var(--orange-click);
+        }
+      }
+    }
+    @include active {
+      &:active {
+        .card__top {
+          border-color: var(--orange-click);
+        }
+      }
+    }
   }
   &__picture {
     position: relative;
@@ -24,6 +54,7 @@
     margin-top: -7.2rem;
     padding: 2.4rem 3.2rem;
     border-bottom: 0.3rem solid var(--platinum);
+    transition: border-color 0.2s;
   }
   &__info {
     display: flex;
@@ -47,6 +78,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  &__sort {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: var(--orange);
+  }
   &__bot {
     display: flex;
     align-items: center;
@@ -67,5 +103,23 @@
   &__buy {
     flex: 1;
     padding: 0.8rem 0;
+    transition: color 0.2s, background 0.2s;
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        color: var(--background);
+        background: var(--orange-hover) !important;
+      }
+      &:active {
+        color: var(--background);
+        background: var(--orange-click) !important;
+      }
+    }
+    @include active {
+      &:active {
+        color: var(--background);
+        background: var(--orange-click);
+      }
+    }
   }
 }

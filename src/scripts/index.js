@@ -33,6 +33,13 @@ class Init {
         this.actions().initAccordion(item)
       })
     }
+
+    if (document.querySelectorAll('.hidetext').length) {
+      const hidetextBlock = document.querySelectorAll('.hidetext')
+      hidetextBlock.forEach((item) => {
+        this.actions().initHideText(item)
+      })
+    }
   }
 
   events() {
@@ -82,11 +89,22 @@ class Init {
         })
       })
     }
+
+    if (document.querySelectorAll('.hidetext__btn').length) {
+      const hidetextBtn = document.querySelectorAll('.hidetext__btn')
+      hidetextBtn.forEach((item) => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault()
+          _this.actions().toggleHidetext(this)
+        })
+      })
+    }
   }
 
   actions() {
     return {
       showBody() {
+        document.querySelector('body style').remove()
         document.querySelector('body').style.opacity = 1
       },
       initPhoneMask() {
@@ -219,6 +237,23 @@ class Init {
           accordion.classList.remove('accordion--active')
           content.style.height = '0px'
         }
+      },
+      initHideText(el) {
+        const text = el.querySelector('.hidetext__text')
+        const btn = el.querySelector('.hidetext__btn')
+        if (text.offsetHeight >= 192) {
+          btn.classList.add('hidetext__btn--active')
+        }
+      },
+      toggleHidetext(el) {
+        const container = el.closest('.hidetext')
+        const text = container.querySelector('.hidetext__text')
+        if (el.classList.contains('hidetext__btn--less')) {
+          text.style.display = '-webkit-box'
+        } else {
+          text.style.display = 'block'
+        }
+        el.classList.toggle('hidetext__btn--less')
       }
     }
   }

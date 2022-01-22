@@ -12,10 +12,16 @@ html(lang="ru")
     link(href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet")
 
   body(style="opacity: 0")
+    style.
+      * {
+          transition: none!important;
+      }
     .sprite
-      include includes/svg-sprite.pug
+      include includes/svg-sprite
     .wrapper
-      include includes/header.pug
+      include includes/header
+      - if (breadcrumbs)
+        include includes/breadcrumbs
       .content
         block content
-      include includes/footer.pug
+      include includes/footer

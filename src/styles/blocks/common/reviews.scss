@@ -16,6 +16,23 @@
       align-items: center;
       margin-left: auto;
       padding: 0.8rem 2rem;
+      transition: color 0.2s, background 0.2s;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--background);
+          background: var(--blue);
+        }
+        &:active {
+          background: var(--blue-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--background);
+          background: var(--blue-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
@@ -29,6 +46,20 @@
       width: 4rem;
       height: 4rem;
       margin-left: 2.4rem;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--blue);
+        }
+        &:active {
+          color: var(--blue-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--blue-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;

@@ -15,7 +15,7 @@
     }
     &:last-child {
       padding: 3.4rem 3.2rem 3rem;
-      filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
+      box-shadow: 0 0.8rem 3.2rem rgb(0, 0, 0, 0.12);
     }
   }
   &__col {
@@ -66,6 +66,43 @@
     align-items: center;
     justify-content: center;
     padding: 0.8rem 0;
+    transition: 0.2s;
+    &--whatsapp {
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--background);
+          background: #25d366;
+        }
+        &:active {
+          background: #1a9447;
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--background);
+          background: #1a9447;
+        }
+      }
+    }
+    &--viber {
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--background);
+          background: #7360f2;
+        }
+        &:active {
+          background: #5547b3;
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--background);
+          background: #5547b3;
+        }
+      }
+    }
     & + & {
       margin-top: 1.6rem;
     }
@@ -111,7 +148,7 @@
         width: 2rem;
         height: 2rem;
         border: 0.2rem solid var(--black-line);
-        border-radius: 0.2rem;
+        border-radius: 0.3rem;
       }
     }
   }

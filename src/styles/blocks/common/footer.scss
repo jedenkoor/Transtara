@@ -7,7 +7,7 @@
   &__content {
     display: grid;
     grid-template-columns: repeat(3, 28.8rem);
-    grid-gap: calc((100% - 28.8rem * 3) / 2);
+    grid-gap: 3.2rem calc((100% - 28.8rem * 3) / 2);
   }
   &__item {
     display: flex;
@@ -46,6 +46,20 @@
     &__link {
       font-weight: 500;
       font-size: 1.6rem;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
     }
   }
   &__socials {
@@ -66,6 +80,20 @@
       justify-content: center;
       width: 4rem;
       height: 4rem;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
@@ -96,6 +124,22 @@
   &__link {
     display: flex;
     font-size: 1.6rem;
+    &:is(a) {
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+    }
     & + & {
       margin-top: 1.6rem;
     }
@@ -113,6 +157,20 @@
     border-radius: 0.4rem;
     font-weight: 500;
     font-size: 1.6rem;
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        color: var(--orange);
+      }
+      &:active {
+        color: var(--orange-click);
+      }
+    }
+    @include active {
+      &:active {
+        color: var(--orange-click);
+      }
+    }
     & + .footer__list {
       padding-bottom: 3.2rem;
       border-radius: 0.8rem 0.8rem 0 0;

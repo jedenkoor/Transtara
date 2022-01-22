@@ -1,5 +1,8 @@
 .header {
-  margin-bottom: 3rem;
+  position: sticky;
+  z-index: 10;
+  top: -10.1rem;
+  padding-bottom: 3rem;
   &__container {
     display: flex;
     align-items: center;
@@ -9,6 +12,18 @@
   }
   &__logo {
     display: flex;
+    color: var(--platinum);
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        color: var(--silver);
+      }
+    }
+    @include active {
+      &:active {
+        color: var(--silver);
+      }
+    }
     svg {
       width: 20.5rem;
       height: 7rem;
@@ -45,6 +60,20 @@
     &__phone {
       font-weight: 500;
       font-size: 1.6rem;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
     }
     &__text {
       font-size: 1.4rem;
@@ -62,6 +91,43 @@
       width: 4rem;
       height: 4rem;
       margin-left: 2.4rem;
+      transition: 0.2s;
+      &--whatsapp {
+        @include hover {
+          &:hover,
+          &:focus-visible {
+            color: var(--background);
+            background: #25d366;
+          }
+          &:active {
+            background: #1a9447;
+          }
+        }
+        @include active {
+          &:active {
+            color: var(--background);
+            background: #1a9447;
+          }
+        }
+      }
+      &--viber {
+        @include hover {
+          &:hover,
+          &:focus-visible {
+            color: var(--background);
+            background: #7360f2;
+          }
+          &:active {
+            background: #5547b3;
+          }
+        }
+        @include active {
+          &:active {
+            color: var(--background);
+            background: #5547b3;
+          }
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
@@ -101,11 +167,29 @@
       justify-content: center;
       width: 4rem;
       height: 4rem;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
       }
     }
+  }
+  &__wrap {
+    background-color: var(--background);
+    border-radius: 0 0 0.8rem 0.8rem;
   }
   &__nav {
     padding: 1.8rem 3.2rem;
@@ -115,39 +199,231 @@
   &__list {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-left: 0;
     list-style: none;
   }
   &-list {
     &__item {
+      position: relative;
       &:first-child {
-        margin-right: 2.1rem;
+        margin-right: auto;
       }
       &:last-child {
-        margin-left: 2.1rem;
+        margin-left: auto;
+      }
+      &--submenu {
+        @include hover {
+          &:hover {
+            .header-list__dropdown {
+              svg {
+                transform: scale(-1);
+              }
+            }
+            .header-list__submenu {
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+              transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+            }
+          }
+        }
+      }
+      &--menu {
+        .header-list__submenu {
+          right: calc(100% - 5.8rem);
+          left: auto;
+          &:before {
+            right: 1rem;
+            left: auto;
+          }
+        }
+        .header-list-submenu__submenu {
+          left: 5.1rem;
+          top: 100%;
+          max-width: 21.4rem;
+        }
       }
     }
     &__btn {
       display: flex;
       align-items: center;
       padding: 0.8rem 2rem;
+      @include hover {
+        &:active svg {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active svg {
+          color: var(--orange-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
         margin-right: 1rem;
+        color: var(--orange);
+        transition: color 0.2s;
       }
     }
     &__dropdown {
       display: flex;
       align-items: center;
+      padding: 0.8rem 2rem;
       font-weight: 500;
       font-size: 1.6rem;
-      cursor: pointer;
+      transition: color 0.2s;
+      @include hover {
+        &:hover,
+        &:focus-visible {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+          svg {
+            color: var(--orange-click);
+          }
+        }
+      }
+      @include active {
+        &:active svg {
+          color: var(--orange-click);
+        }
+      }
       svg {
         width: 2.4rem;
         height: 2.4rem;
         margin-right: 1rem;
+        color: var(--orange);
+        transition: 0.2s;
+      }
+    }
+    &__submenu {
+      position: absolute;
+      z-index: 2;
+      left: 0.6rem;
+      top: 100%;
+      width: max-content;
+      padding-top: 1.6rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(0.6rem);
+      transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        width: 3.2rem;
+        height: 1.6rem;
+        background: url('../images/submenu-arrow.svg') center/contain no-repeat;
+      }
+    }
+    &-submenu {
+      &__list {
+        display: flex;
+        flex-direction: column;
+        padding: 1.6rem 0;
+        list-style: none;
+        background: var(--background-card);
+        box-shadow: 0 0 3.2rem rgba(0, 0, 0, 0.2);
+        border-radius: 0.8rem;
+      }
+      &__item {
+        position: relative;
+        &--submenu {
+          @include hover {
+            &:hover .header-list-submenu__submenu {
+              opacity: 1;
+              visibility: visible;
+              transform: none;
+              transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+            }
+          }
+          .header-list-submenu__link {
+            &:before,
+            &:after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              right: 2.4rem;
+              width: 2.4rem;
+              height: 2.4rem;
+              transform: translateY(-50%);
+            }
+            &:before {
+              z-index: 2;
+              background: url('../images/submenu-link-arrow.svg') center/contain no-repeat;
+              transition: opacity 0.2s;
+            }
+            &:after {
+              background: url('../images/submenu-link-arrow-click.svg') center/contain no-repeat;
+            }
+          }
+        }
+      }
+      &__link {
+        position: relative;
+        display: flex;
+        padding: 0.8rem 8rem 0.8rem 3.2rem;
+        font-weight: 500;
+        font-size: 1.6rem;
+        @include hover {
+          &:hover,
+          &:focus-visible {
+            color: var(--orange);
+          }
+          &:active {
+            color: var(--orange-click);
+            &:before {
+              opacity: 0;
+            }
+          }
+        }
+        @include active {
+          &:active {
+            color: var(--orange-click);
+          }
+        }
+      }
+      &__submenu {
+        position: absolute;
+        z-index: 2;
+        top: -1.6rem;
+        left: 100%;
+        width: max-content;
+        padding: 1.6rem 0;
+        list-style: none;
+        background: var(--background-card);
+        box-shadow: 0 0 3.2rem rgba(0, 0, 0, 0.2);
+        border-radius: 0.8rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(0.6rem);
+        transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
+      }
+      &-submenu {
+        &__link {
+          display: flex;
+          padding: 0.8rem 3.2rem;
+          font-weight: 500;
+          font-size: 1.6rem;
+          @include hover {
+            &:hover,
+            &:focus-visible {
+              color: var(--orange);
+            }
+            &:active {
+              color: var(--orange-click);
+            }
+          }
+          @include active {
+            &:active {
+              color: var(--orange-click);
+            }
+          }
+        }
       }
     }
   }

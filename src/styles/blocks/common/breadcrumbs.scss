@@ -1,0 +1,40 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+  list-style: none;
+  &__item {
+    &:not(:last-child) {
+      margin-right: 1.2rem;
+    }
+    &:last-child {
+      .breadcrumbs__link {
+        color: var(--grey-text);
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    font-weight: 500;
+    font-size: 1.6rem;
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        color: var(--orange);
+      }
+      &:active {
+        color: var(--orange-click);
+      }
+    }
+    @include active {
+      &:active {
+        color: var(--orange-click);
+      }
+    }
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-left: 1.3rem;
+    }
+  }
+}

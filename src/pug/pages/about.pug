@@ -1,0 +1,112 @@
+extends ../template
+
+block variables
+  - var title = 'О компании'
+  - var breadcrumbs = ['Главная', 'О нас']
+
+block content
+  section.hidetext.margin-section
+    .container.hidetext__container
+      .hidetext__col
+        h1.title О нас
+        .hidetext__text
+          p Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить) Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить)
+        button.hidetext__btn(data-more="Показать больше" data-less="Показать меньше")
+          svg
+            use(xlink:href="#hidetext-arrow")
+      .hidetext__col
+        picture.hidetext__picture
+          source(srcset="/static/images/about.jpg" type="image/webp")
+          img.hidetext__img(src="/static/images/about.jpg" alt="О нас")
+
+  section.mission.margin-section
+    .container
+      h2.title Миссия компании
+      .mission__content
+        .mission__item
+          p <span>Основная задача компании</span> – снабжение организаций надежными паллетами с расширенной, усиленной или облегченной конструкцией, б/у поддонами. Все модели рассчитаны на продолжительную эксплуатацию, потому что изготавливаются из хвойных пород дерева. Максимальный срок службы поддона – 5 лет.
+          p Но это не значит, что паллетная продукция дорого стоит. <span>Наши расценки на деревянные поддоны ниже средних по рынку.</span> Компании могут значительно сэкономить при заказе у нас. Они тестируются и проверяются специалистами, поэтому дефекты в виде сколов и трещин отсутствуют.
+          p На производственно-складских комплексах установлено импортное оборудование. Оно применяется для ремонта и подготовки поддонов к продаже.
+        .info__item
+          h2.title.info__title Как заказать?
+          button.btn.primary-btn.info__btn Оставить заявку
+          span.info__subtext Или позвонить
+          a.info__phone(href="tel:+7 000 000 00 00") +7 000 000 00 00
+
+  section.benefits.margin-section
+    .container
+      h2.title.benefits__title Почему с нами хотят работать?
+      ul.benefits__list
+        li.benefits__item.benefits-item
+          .benefits-item__decor
+            svg
+              use(xlink:href="#benefits4")
+          h3.benefits-item__title Предпродажная подготовка
+          p.benefits-item__text Наши специалисты тщательно осматривают и готовят паллеты к продаже достигая 100% качества.
+        li.benefits__item.benefits-item
+          .benefits-item__decor
+            svg
+              use(xlink:href="#benefits5")
+          h3.benefits-item__title Свой автопарк
+          p.benefits-item__text Большой автопарк собственной техники, позволяет доставить покупателям большое количество поддонов.
+        li.benefits__item.benefits-item
+          .benefits-item__decor
+            svg
+              use(xlink:href="#benefits3")
+          h3.benefits-item__title Соответствие ГОСТу и евро стандартам
+          p.benefits-item__text Наша продукция соответствует высоким стандартам. Максимальный срок эксплуатации — 5 лет.
+
+  section.history.margin-section
+    .container
+      h2.title.history__title История компании
+      .history__list
+        .history__row
+          .history__item.history-item(data-year="1999")
+            .history-item__wrap
+              h3.history-item__title Начало деятельности
+              .history-item__text
+                p Мы начали искать новый уникальный подход при оптовой продажи. Разработали стратегии, которым сделуем по сей день.
+          .history__item.history-item(data-year="2012")
+            .history-item__wrap
+              h3.history-item__title Регистрация в РФ
+              .history-item__text
+                p Зарегистрирована компания «Транстара», вобравшая в тебя весь опыт и знания предыдущих лет.
+          .history__item.history__item--picture.history-item
+            picture.history-item__picture
+              source(srcset="/static/images/about.jpg" type="image/webp")
+              img.history-item__img(src="/static/images/about.jpg" alt="История компании")
+        .history__row
+          .history__item.history__item--picture.history-item
+            picture.history-item__picture
+              source(srcset="/static/images/about.jpg" type="image/webp")
+              img.history-item__img(src="/static/images/about.jpg" alt="История компании")
+          .history__item.history-item(data-year="2013" style="grid-column: 3 / 4")
+            .history-item__wrap
+              h3.history-item__title Грандиозное открытие собственного склада
+              .history-item__text
+                p Мы приобрели склад в Московской области площадью 7000 кв.м, что позволяет вместить в себя свыше 130 000 паллетов и ускорить доставку до клиента.
+        .history__row
+          .history__item.history-item(data-year="2017" style="grid-column: 1 / 2")
+            .history-item__wrap
+              h3.history-item__title Расширение компании
+              .history-item__text
+                p Увеличили штат компании с 10 человек до 50. Расширили возможности автопарка, увеличив его с 3 до 10 единиц техники.
+          .history__item.history-item(data-year="2015")
+            .history-item__wrap
+              h3.history-item__title Более миллиона поддонов в год
+              .history-item__text
+                p Достигли значимого оборота товара свыше 1 000 000 единиц в год и продолжаем расти.
+        .history__row
+          .history__item.history-item(data-year="2020" style="grid-column: 2 / 3")
+            .history-item__wrap
+              h3.history-item__title Пандемия
+              .history-item__text
+                p В сложное время для людей и всего Мира мы сохраняли человечность. Помогаем сотрудникам оставаться здоровы, даже если это в ущерб себе.
+          .history__item.history-item(data-year="Сейчас")
+            .history-item__wrap
+              h3.history-item__title Движемся вперед, не забывая о прошлом
+              .history-item__text
+                p Помня все, что с нами было и бережно храня уроки прошлого, мы можем уверенно идти вперед.
+
+  include ../includes/fag
+  include ../includes/callback
