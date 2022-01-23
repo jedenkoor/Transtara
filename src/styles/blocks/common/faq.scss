@@ -37,11 +37,10 @@
       cursor: pointer;
       text-align: left;
       font-weight: 600;
-      font-size: 1.6rem;
       transition: color 0.2s;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -66,7 +65,6 @@
       opacity: 0;
       margin-bottom: 0;
       padding: 0 3.2rem;
-      font-size: 1.6rem;
     }
   }
 }

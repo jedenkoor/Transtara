@@ -6,22 +6,40 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{title}
     meta(content="" name="description")
     meta(content="" name="keywords")
-    title #{title}
+
+    meta(property="og:site_name" content="Transtara")
+    meta(property="og:title" content="Transtara")
+    meta(property="og:description" content="Transtara")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://transtara.ru/")
+    meta(property="og:image" content="/static/images/og-share-img.jpg")
+    meta(property="og:image:width" content="1800")
+    meta(property="og:image:height" content="945")
+
     link(href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet")
 
-  body(style="opacity: 0")
+    link(rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png")
+    link(rel="manifest" href="/static/favicon/site.webmanifest")
+    link(rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#ff6300")
+    meta(name="msapplication-TileColor" content="#ffffff")
+    meta(name="theme-color" content="#ffffff")
+
+  body(style="opacity=0")
     style.
       * {
-          transition: none!important;
+          transition=none!important;
       }
     .sprite
       include includes/svg-sprite
     .wrapper
       include includes/header
-      - if (breadcrumbs)
-        include includes/breadcrumbs
-      .content
+      main.content
+        - if (breadcrumbs)
+          include includes/breadcrumbs
         block content
       include includes/footer

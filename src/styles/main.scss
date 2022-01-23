@@ -19,7 +19,7 @@
   --grey-text: #c0c0c0;
   --selection-color: rgba(255, 99, 0, 0.99);
   --img-selection-color: rgba(255, 99, 0, 0.5);
-  --error: red;
+  --error: #ed1717;
 }
 
 ::selection {
@@ -72,7 +72,7 @@ html {
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   color: var(--black-text);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -118,7 +118,7 @@ body {
   box-sizing: border-box;
 }
 
-*:focus-visible {
+*:focus {
   outline: none;
 }
 
@@ -220,7 +220,7 @@ input[type='number'] {
   transition: background 0.2s;
   @include hover {
     &:hover,
-    &:focus-visible {
+    &:focus {
       background: var(--orange-hover);
     }
     &:active {
@@ -240,7 +240,7 @@ input[type='number'] {
   transition: color 0.2s;
   @include hover {
     &:hover,
-    &:focus-visible {
+    &:focus {
       color: var(--orange);
     }
     &:active {
@@ -249,8 +249,12 @@ input[type='number'] {
   }
   @include active {
     &:active {
-      background: var(--blue-click);
+      color: var(--orange-click);
     }
+  }
+  &[disabled] {
+    pointer-events: none;
+    color: var(--silver);
   }
   path {
     transition: 0.2s;
@@ -263,7 +267,7 @@ input[type='number'] {
   transition: background 0.2s;
   @include hover {
     &:hover,
-    &:focus-visible {
+    &:focus {
       background: var(--blue-hover);
     }
     &:active {
@@ -286,7 +290,6 @@ input[type='number'] {
       left: 1.4rem;
       padding: 0 1rem;
       font-weight: 500;
-      font-size: 1.6rem;
       line-height: 1.67;
       color: var(--silver);
       pointer-events: none;
@@ -311,15 +314,21 @@ textarea {
   font-size: 1.6rem;
   color: var(--black-text);
   &:not(:placeholder-shown) + label,
-  &:focus-visible + label {
+  &:focus + label {
     top: -0.9rem;
     font-size: 1.2rem;
   }
   &.input-err {
     border-color: var(--error);
+    & + label {
+      color: var(--error);
+    }
   }
   &.input-ok {
     border-color: var(--black-line);
+    & + label {
+      color: var(--black-line);
+    }
   }
 }
 
@@ -333,20 +342,16 @@ input[type='password'] {
   border-radius: 0.4rem;
 }
 
-.select {
-  &--active {
-    .select-content {
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
-    }
-  }
-  &-content {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(0.6rem);
-    transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
+.submenu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.6rem);
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.2s;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
   }
 }
 
@@ -367,3 +372,5 @@ input[type='password'] {
 @import 'blocks/otherpages/mission';
 @import 'blocks/otherpages/history';
 @import 'blocks/otherpages/catalog';
+@import 'blocks/otherpages/404';
+@import 'blocks/otherpages/text';

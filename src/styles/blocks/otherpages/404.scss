@@ -1,0 +1,36 @@
+.notfound {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 7.2rem 13.6rem 0 7.6rem;
+  }
+  &__col {
+    > svg {
+      width: 24rem;
+      height: 24rem;
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 5.2rem;
+      height: 5.2rem;
+      margin-right: 2.4rem;
+    }
+  }
+  &__text {
+    max-width: 35.2rem;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding: 0.8rem 2rem;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+    }
+  }
+}

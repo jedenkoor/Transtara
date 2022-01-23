@@ -5,9 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 const PAGES_DIR = path.join(__dirname, '/src/pug/pages/')
-const PAGES = fs
-  .readdirSync(PAGES_DIR)
-  .filter((fileName) => fileName.endsWith('.pug'))
+const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith('.pug'))
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -27,20 +25,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.(png|jpg|jpeg|gif|ico|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'img/[name][ext]'
-        }
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext]'
-        }
-      },
       {
         test: /\.pug$/,
         loader: 'pug-loader'

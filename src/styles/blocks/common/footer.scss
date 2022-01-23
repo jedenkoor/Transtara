@@ -45,10 +45,9 @@
     }
     &__link {
       font-weight: 500;
-      font-size: 1.6rem;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -82,7 +81,7 @@
       height: 4rem;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -105,7 +104,6 @@
     margin-left: 0.8rem;
     padding-top: 2.1rem;
     border-top: 0.3rem solid var(--platinum);
-    font-size: 1.6rem;
     color: var(--silver);
   }
   &__info {
@@ -123,11 +121,10 @@
   }
   &__link {
     display: flex;
-    font-size: 1.6rem;
     &:is(a) {
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -156,10 +153,9 @@
     background: var(--platinum);
     border-radius: 0.4rem;
     font-weight: 500;
-    font-size: 1.6rem;
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         color: var(--orange);
       }
       &:active {

@@ -16,10 +16,9 @@
   &__link {
     display: flex;
     font-weight: 500;
-    font-size: 1.6rem;
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         color: var(--orange);
       }
       &:active {

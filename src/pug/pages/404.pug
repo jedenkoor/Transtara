@@ -1,0 +1,21 @@
+extends ../template
+
+block variables
+  - var title = '404'
+
+block content
+  section.notfound.margin-section
+    .container.notfound__container
+      .notfound__col
+        h1.title.notfound__title
+          svg
+            use(xlink:href="#404-title")
+          | Страница не найдена
+        p.notfound__text Такое происходит из-за неправильного адреса или страница просто переехала в другое место.
+        a.btn.primary-btn.notfound__btn
+          svg
+            use(xlink:href="#404-btn")
+          | Главная
+      .notfound__col
+        svg
+          use(xlink:href="#404-img")

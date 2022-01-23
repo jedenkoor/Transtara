@@ -15,7 +15,7 @@
     display: block;
     padding-bottom: 2.4rem;
     @include hover {
-      &:focus-visible {
+      &:focus {
         .card__top {
           border-color: var(--orange);
         }
@@ -60,7 +60,6 @@
     display: flex;
     align-items: center;
     font-weight: 600;
-    font-size: 1.6rem;
     svg {
       width: 2.4rem;
       height: 2.4rem;
@@ -72,7 +71,6 @@
     margin-top: 2.4rem;
     padding: 0 3.2rem;
     font-weight: 600;
-    font-size: 1.6rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -93,7 +91,6 @@
     align-items: center;
     margin-right: 2.4rem;
     font-weight: 500;
-    font-size: 1.6rem;
     span {
       display: inline-block;
       margin-right: 1rem;
@@ -106,7 +103,7 @@
     transition: color 0.2s, background 0.2s;
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         color: var(--background);
         background: var(--orange-hover) !important;
       }

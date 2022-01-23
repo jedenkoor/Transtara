@@ -15,7 +15,7 @@
     color: var(--platinum);
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         color: var(--silver);
       }
     }
@@ -52,17 +52,15 @@
     }
     &__name {
       font-weight: 500;
-      font-size: 1.6rem;
       & + .header-info__phone {
         margin-left: 1.4rem;
       }
     }
     &__phone {
       font-weight: 500;
-      font-size: 1.6rem;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -95,11 +93,12 @@
       &--whatsapp {
         @include hover {
           &:hover,
-          &:focus-visible {
+          &:focus {
             color: var(--background);
             background: #25d366;
           }
           &:active {
+            color: var(--background);
             background: #1a9447;
           }
         }
@@ -113,11 +112,12 @@
       &--viber {
         @include hover {
           &:hover,
-          &:focus-visible {
+          &:focus {
             color: var(--background);
             background: #7360f2;
           }
           &:active {
+            color: var(--background);
             background: #5547b3;
           }
         }
@@ -169,7 +169,7 @@
       height: 4rem;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -190,6 +190,10 @@
   &__wrap {
     background-color: var(--background);
     border-radius: 0 0 0.8rem 0.8rem;
+    transition: box-shadow 0.2s;
+    &.scroll {
+      box-shadow: 0 0 3.2rem rgba(0, 0, 0, 0.2);
+    }
   }
   &__nav {
     padding: 1.8rem 3.2rem;
@@ -220,12 +224,17 @@
                 transform: scale(-1);
               }
             }
-            .header-list__submenu {
+            > .submenu {
               opacity: 1;
               visibility: visible;
               transform: none;
-              transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+              transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
             }
+          }
+        }
+        .header-list__dropdown:focus {
+          svg {
+            transform: scale(-1);
           }
         }
       }
@@ -272,11 +281,10 @@
       align-items: center;
       padding: 0.8rem 2rem;
       font-weight: 500;
-      font-size: 1.6rem;
       transition: color 0.2s;
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--orange);
         }
         &:active {
@@ -299,6 +307,19 @@
         transition: 0.2s;
       }
     }
+    &__btn,
+    &__dropdown {
+      @include hover {
+        &:focus {
+          & + .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+          }
+        }
+      }
+    }
     &__submenu {
       position: absolute;
       z-index: 2;
@@ -306,10 +327,6 @@
       top: 100%;
       width: max-content;
       padding-top: 1.6rem;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(0.6rem);
-      transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
       &:before {
         content: '';
         position: absolute;
@@ -334,14 +351,24 @@
         position: relative;
         &--submenu {
           @include hover {
-            &:hover .header-list-submenu__submenu {
+            &:hover > .submenu {
               opacity: 1;
               visibility: visible;
               transform: none;
-              transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+              transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
             }
           }
           .header-list-submenu__link {
+            @include hover {
+              &:focus {
+                & + .submenu {
+                  opacity: 1;
+                  visibility: visible;
+                  transform: none;
+                  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0s;
+                }
+              }
+            }
             &:before,
             &:after {
               content: '';
@@ -368,10 +395,9 @@
         display: flex;
         padding: 0.8rem 8rem 0.8rem 3.2rem;
         font-weight: 500;
-        font-size: 1.6rem;
         @include hover {
           &:hover,
-          &:focus-visible {
+          &:focus {
             color: var(--orange);
           }
           &:active {
@@ -398,20 +424,15 @@
         background: var(--background-card);
         box-shadow: 0 0 3.2rem rgba(0, 0, 0, 0.2);
         border-radius: 0.8rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateX(0.6rem);
-        transition: opacity 0.3s, transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0s 0.3s;
       }
       &-submenu {
         &__link {
           display: flex;
           padding: 0.8rem 3.2rem;
           font-weight: 500;
-          font-size: 1.6rem;
           @include hover {
             &:hover,
-            &:focus-visible {
+            &:focus {
               color: var(--orange);
             }
             &:active {

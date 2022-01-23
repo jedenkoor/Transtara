@@ -70,11 +70,12 @@
     &--whatsapp {
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--background);
           background: #25d366;
         }
         &:active {
+          color: var(--background);
           background: #1a9447;
         }
       }
@@ -88,11 +89,12 @@
     &--viber {
       @include hover {
         &:hover,
-        &:focus-visible {
+        &:focus {
           color: var(--background);
           background: #7360f2;
         }
         &:active {
+          color: var(--background);
           background: #5547b3;
         }
       }
@@ -139,7 +141,6 @@
       display: block;
       margin-top: 3rem;
       padding-left: 4rem;
-      font-size: 1.6rem;
       &:before {
         content: '';
         position: absolute;

@@ -9,6 +9,7 @@ Swiper.use([Navigation, EffectFade])
 class Init {
   constructor() {
     this.init()
+    this.scrollTimer = 0
   }
 
   init() {
@@ -44,6 +45,10 @@ class Init {
 
   events() {
     const _this = this
+
+    window.addEventListener('scroll', () => {
+      _this.actions().handleScroll()
+    })
 
     const emailInput = document.querySelectorAll('input[data-type="email"]')
     emailInput.forEach((item) => {
@@ -95,7 +100,61 @@ class Init {
       hidetextBtn.forEach((item) => {
         item.addEventListener('click', function (e) {
           e.preventDefault()
-          _this.actions().toggleHidetext(this)
+          _this.actions().toggleHideText(this)
+        })
+      })
+    }
+
+    if (document.querySelectorAll('.submenu').length) {
+      const submenu = document.querySelectorAll('.submenu')
+      submenu.forEach((item) => {
+        item.addEventListener(
+          'focus',
+          function () {
+            _this.actions().showSubmenu(this)
+          },
+          true
+        )
+      })
+    }
+
+    if (document.querySelectorAll('.submenu').length) {
+      const submenu = document.querySelectorAll('.submenu')
+      submenu.forEach((item) => {
+        item.addEventListener(
+          'blur',
+          function () {
+            _this.actions().hideSubmenu(this)
+          },
+          true
+        )
+      })
+    }
+
+    if (document.querySelectorAll('.catalog-filters__name').length) {
+      const catalogNames = document.querySelectorAll('.catalog-filters__name')
+      catalogNames.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault()
+        })
+      })
+    }
+
+    if (document.querySelectorAll('input[type="checkbox"] + span').length) {
+      const labelCheckboxes = document.querySelectorAll('input[type="checkbox"] + span')
+      labelCheckboxes.forEach((item) => {
+        item.addEventListener('click', () => {
+          _this.actions().removeFocus()
+        })
+      })
+    }
+
+    if (document.querySelectorAll('.catalog__filters input').length) {
+      const filterInputs = document.querySelectorAll('.catalog__filters input')
+      filterInputs.forEach((item) => {
+        item.addEventListener('change', function () {
+          _this.actions().toggleClearFilter(this)
+          _this.actions().checkCategory(this)
         })
       })
     }
@@ -106,6 +165,20 @@ class Init {
       showBody() {
         document.querySelector('body style').remove()
         document.querySelector('body').style.opacity = 1
+      },
+      handleScroll() {
+        if (this.scrollTimer) {
+          return
+        }
+        this.scrollTimer = setTimeout(() => {
+          if (window.scrollY > 101) {
+            document.querySelector('.header__wrap').classList.add('scroll')
+          } else {
+            document.querySelector('.header__wrap').classList.remove('scroll')
+          }
+          clearTimeout(this.scrollTimer)
+          this.scrollTimer = 0
+        }, 100)
       },
       initPhoneMask() {
         document.querySelectorAll('[data-type="tel"]').forEach((item) => {
@@ -241,19 +314,60 @@ class Init {
       initHideText(el) {
         const text = el.querySelector('.hidetext__text')
         const btn = el.querySelector('.hidetext__btn')
-        if (text.offsetHeight >= 192) {
+        if (text.offsetHeight > 192) {
+          text.setAttribute('data-height', text.offsetHeight)
+          text.style.height = '192px'
           btn.classList.add('hidetext__btn--active')
         }
       },
-      toggleHidetext(el) {
+      toggleHideText(el) {
         const container = el.closest('.hidetext')
         const text = container.querySelector('.hidetext__text')
         if (el.classList.contains('hidetext__btn--less')) {
-          text.style.display = '-webkit-box'
+          text.style.height = '192px'
         } else {
-          text.style.display = 'block'
+          text.style.height = `${text.getAttribute('data-height')}px`
         }
         el.classList.toggle('hidetext__btn--less')
+      },
+      showSubmenu(el) {
+        el.closest('.submenu').classList.add('active')
+      },
+      hideSubmenu(el) {
+        el.closest('.submenu').classList.remove('active')
+      },
+      removeFocus() {
+        setTimeout(() => {
+          document.activeElement.blur()
+        }, 100)
+      },
+      toggleClearFilter(el) {
+        const form = el.closest('form')
+        const clear = form.querySelector('.catalog-filters__clear')
+        const inputs = form.querySelectorAll('input')
+        let flagDisabled = true
+        inputs.forEach((item) => {
+          if (item.checked) {
+            flagDisabled = false
+          }
+        })
+        clear.disabled = flagDisabled
+      },
+      checkCategory(el) {
+        const category = el.closest('.catalog-filters__item')
+        const name = category.querySelector('.catalog-filters__name')
+        const inputs = category.querySelectorAll('input')
+        let flagActive = false
+        inputs.forEach((item) => {
+          if (item.checked) {
+            flagActive = true
+          }
+        })
+        if (flagActive) {
+          name.classList.add('active')
+        } else {
+          name.classList.remove('active')
+        }
       }
     }
   }

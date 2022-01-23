@@ -11,11 +11,9 @@
   }
   &__text {
     margin-bottom: 3.2rem;
-    font-size: 1.6rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 8;
-    -webkit-box-orient: vertical;
+    display: block;
     overflow: hidden;
+    transition: height 0.3s;
   }
   &__btn {
     display: none;
@@ -24,13 +22,12 @@
     border: none;
     background: none;
     font-weight: 500;
-    font-size: 1.6rem;
     color: var(--orange);
     cursor: pointer;
     transition: color 0.2s;
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         color: var(--orange-hover);
       }
       &:active {

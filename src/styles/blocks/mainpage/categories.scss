@@ -11,7 +11,7 @@
     align-items: center;
     @include hover {
       &:hover,
-      &:focus-visible {
+      &:focus {
         .categories-link__btn {
           color: var(--background);
           background: var(--orange);
@@ -22,7 +22,11 @@
       }
       &:active {
         .categories-link__btn {
+          color: var(--background);
           background: var(--orange-click);
+          svg {
+            color: var(--background);
+          }
         }
       }
     }

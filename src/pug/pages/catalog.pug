@@ -1,0 +1,139 @@
+extends ../template
+
+block variables
+  - var title = 'Каталог'
+  - var breadcrumbs = ['Главная', 'Каталог']
+
+block content
+  section.catalog.margin-section
+    .container
+      h1.title Каталог
+      .catalog__links
+        a.btn.secondary-btn.catalog__link(href="#")
+          svg
+            use(xlink:href="#pallety")
+          | Паллеты
+        a.btn.secondary-btn.catalog__link.active(href="#")
+          svg
+            use(xlink:href="#kryshki")
+          | Паллетные крышки
+        a.btn.secondary-btn.catalog__link(href="#")
+          svg
+            use(xlink:href="#borta")
+          | Поллетные борта
+
+      form.catalog__filters.catalog-filters
+        ul.catalog-filters__list
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#filter-categories")
+              span Категория
+            .submenu.catalog-filters__submenu.catalog-filters-submenu
+              .catalog-filters-submenu__wrap
+                ul.catalog-filters-submenu__list
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="1")
+                      span Деревянные поддоны
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="2")
+                      span Пластиковые поддоны
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="3")
+                      span Поддоны ГОСТ
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="4")
+                      span Европоддоны
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="5")
+                      span Паллетные крышки
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="6")
+                      span Паллетные борта
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="7")
+                      span Паллетные борта
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="8")
+                      span Паллетные борта
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="categories" value="9")
+                      span Паллетные борта
+
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#card-size")
+              span Размер
+            .submenu.catalog-filters__submenu.catalog-filters-submenu
+              .catalog-filters-submenu__wrap
+                ul.catalog-filters-submenu__list
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="size" value="1")
+                      span Деревянные поддоны
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="size" value="2")
+                      span Пластиковые поддоны
+                  li.catalog-filters-submenu__item
+                    label.catalog-filters-submenu__label
+                      input(type="checkbox" name="size" value="3")
+                      span Поддоны ГОСТ
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#card-weight")
+              span Грузоподъемность
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#filter-sort")
+              span Сорт
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#filter-state")
+              span Состояние
+          li.catalog-filters__item.catalog-filters__item--submenu
+            button.btn.secondary-btn.catalog-filters__name
+              svg
+                use(xlink:href="#filter-stigma")
+              span Клеймо
+        button.btn.secondary-btn.catalog-filters__clear(disabled)
+          svg
+            use(xlink:href="#filter-clear")
+      ul.catalog__list
+        - for (var i = 0; i < 3; i++)
+          include ../includes/card.pug
+      .leaders__bot
+        button.btn.primary-btn.leaders__btn
+          svg
+            use(xlink:href="#catalog-more")
+          | Показать еще
+
+  section.hidetext.margin-section
+    .container.hidetext__container
+      .hidetext__col
+        h2.title Паллеты
+        .hidetext__text
+          p Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить)
+        button.hidetext__btn(data-more="Показать больше" data-less="Показать меньше")
+          svg
+            use(xlink:href="#hidetext-arrow")
+      .hidetext__col
+        picture.hidetext__picture
+          source(srcset="/static/images/about.jpg" type="image/webp")
+          img.hidetext__img(src="/static/images/about.jpg" alt="О нас")
+
+  include ../includes/fag
+  include ../includes/callback
