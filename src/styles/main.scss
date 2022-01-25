@@ -58,14 +58,8 @@ html {
   @include more-fullhd {
     font-size: 0.52vw;
   }
-  &.fixed {
+  &.with-fancybox {
     overflow: hidden;
-  }
-  &.compensate-for-scrollbar {
-    margin-right: 0.4rem;
-    @-moz-document url-prefix() {
-      margin-right: 1.7rem;
-    }
   }
 }
 
@@ -78,6 +72,9 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
   transition: opacity 0.2s;
+  &.compensate-for-scrollbar {
+    overflow: visible !important;
+  }
 }
 
 .sprite {
@@ -281,6 +278,10 @@ input[type='number'] {
   }
 }
 
+.star {
+  color: var(--orange);
+}
+
 .input {
   &-block {
     position: relative;
@@ -355,6 +356,35 @@ input[type='password'] {
   }
 }
 
+.fancybox {
+  &__button {
+    &--zoom,
+    &--slideshow,
+    &--fullscreen,
+    &--thumbs {
+      display: none;
+    }
+  }
+  &__toolbar {
+    background: none;
+  }
+  &__slide {
+    padding: 64px 24px;
+  }
+}
+
+.popup {
+  max-height: 52.8rem;
+  background: var(--background);
+  box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.12);
+  border-radius: 0.8rem;
+  &__wrap {
+    .fancybox__backdrop {
+      background: rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
 @import 'blocks/common/header';
 @import 'blocks/common/breadcrumbs';
 @import 'blocks/common/footer';
@@ -362,6 +392,7 @@ input[type='password'] {
 @import 'blocks/common/reviews';
 @import 'blocks/common/faq';
 @import 'blocks/common/callback';
+@import 'blocks/common/popup-buy';
 @import 'blocks/mainpage/banner';
 @import 'blocks/mainpage/categories';
 @import 'blocks/mainpage/promo';
@@ -372,5 +403,6 @@ input[type='password'] {
 @import 'blocks/otherpages/mission';
 @import 'blocks/otherpages/history';
 @import 'blocks/otherpages/catalog';
+@import 'blocks/otherpages/goodpage';
 @import 'blocks/otherpages/404';
 @import 'blocks/otherpages/text';

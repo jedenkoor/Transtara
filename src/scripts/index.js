@@ -1,15 +1,20 @@
-import Swiper, { Navigation, EffectFade } from 'swiper'
+import Swiper, { Navigation, Pagination, EffectFade } from 'swiper'
 import IMask from 'imask'
+import { Fancybox } from '@fancyapps/ui'
+import '@fancyapps/ui/dist/fancybox.css'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 
-Swiper.use([Navigation, EffectFade])
+Swiper.use([Navigation, Pagination, EffectFade])
 
 class Init {
   constructor() {
     this.init()
     this.scrollTimer = 0
+    this.directionScroll = [0]
+    this.count = -100
   }
 
   init() {
@@ -19,12 +24,34 @@ class Init {
       this.actions().showBody()
     }, 300)
 
+    Fancybox.bind('[data-fancybox]:not([data-src])', {
+      infinite: false,
+      closeButton: 'outside',
+      dragToClose: false,
+      Thumbs: {
+        autoStart: false
+      }
+    })
+
+    Fancybox.bind('[data-fancybox][data-src]', {
+      dragToClose: false,
+      mainClass: 'popup__wrap',
+      ScrollLock: false
+    })
+
     this.actions().initPhoneMask()
 
     if (document.querySelectorAll('.info__reviews').length) {
       const reviewsSliders = document.querySelectorAll('.info__reviews')
       reviewsSliders.forEach((item) => {
         this.actions().initReviewsSlider(item)
+      })
+    }
+
+    if (document.querySelectorAll('.goodpage__gallery').length) {
+      const reviewsSliders = document.querySelectorAll('.goodpage__gallery')
+      reviewsSliders.forEach((item) => {
+        this.actions().initGoodpageSlider(item)
       })
     }
 
@@ -48,6 +75,13 @@ class Init {
 
     window.addEventListener('scroll', () => {
       _this.actions().handleScroll()
+    })
+
+    const scrollBLocks = document.querySelectorAll('.scroll-block')
+    scrollBLocks.forEach((item) => {
+      document.addEventListener('scroll', () => {
+        _this.actions().scrollBlock(item)
+      })
     })
 
     const emailInput = document.querySelectorAll('input[data-type="email"]')
@@ -180,6 +214,26 @@ class Init {
           this.scrollTimer = 0
         }, 100)
       },
+      scrollBlock: (el) => {
+        this.directionScroll.push(window.pageYOffset)
+        if (
+          this.directionScroll[0] < this.directionScroll[1] &&
+          el.getBoundingClientRect().bottom > window.innerHeight - 20 &&
+          el.getBoundingClientRect().top <= 100
+        ) {
+          this.count = this.count + (this.directionScroll[1] - this.directionScroll[0])
+          if (this.count >= el.offsetHeight - window.innerHeight + 100) {
+            this.count = el.offsetHeight - window.innerHeight + 100
+          }
+        } else if (this.directionScroll[0] >= this.directionScroll[1] && el.getBoundingClientRect().top < 100) {
+          this.count = this.count - (this.directionScroll[0] - this.directionScroll[1])
+          if (this.count <= -100) {
+            this.count = -100
+          }
+        }
+        el.style.top = `${-this.count}px`
+        this.directionScroll.shift()
+      },
       initPhoneMask() {
         document.querySelectorAll('[data-type="tel"]').forEach((item) => {
           const telMask = IMask(item, {
@@ -280,6 +334,34 @@ class Init {
             navigation: {
               prevEl: prevArr,
               nextEl: nextArr
+            }
+          }))()
+      },
+      initGoodpageSlider(el) {
+        const prevArr = el.querySelector('.goodpage-gallery__arr--prev')
+        const nextArr = el.querySelector('.goodpage-gallery__arr--next')
+        const pagination = el.querySelector('.goodpage-gallery__pagination')
+        ;(() =>
+          new Swiper(el, {
+            resistanceRatio: 0,
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            navigation: {
+              prevEl: prevArr,
+              nextEl: nextArr
+            },
+            pagination: {
+              el: pagination,
+              type: 'fraction'
+            },
+            on: {
+              transitionEnd: function (swiper) {
+                const swiperLinks = el.querySelectorAll('a')
+                swiperLinks[swiper.previousIndex].setAttribute('tabIndex', '-1')
+                swiperLinks[swiper.activeIndex].removeAttribute('tabIndex')
+              }
             }
           }))()
       },
