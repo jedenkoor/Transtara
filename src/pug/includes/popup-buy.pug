@@ -71,4 +71,45 @@
           span.goodpage-info__property 144 мм
     .popup-buy__colwrap
       .popup-buy__title Заявка
-      .popup-buy__col
+      form.popup-buy__col
+        .input-block
+          input.callback__input(type="text" name="name" placeholder=" " data-required)
+          label Имя
+            span.input-hintreq *
+        .input-block
+          input.callback__input(type="tel" name="phone" placeholder=" " data-type="tel" data-required)
+          label Телефон
+            span.input-hintreq *
+        .popup-buy__row
+          .input-block
+            input.callback__input.input-ok(type="text" name="num" value="1" placeholder=" " data-type="num" data-required)
+            label Кол-во
+          button.btn.secondary-btn.popup-buy__btnnum.popup-buy__btnnum--minus
+            svg
+              use(xlink:href="#popup-buy-minus")
+          button.btn.secondary-btn.popup-buy__btnnum.popup-buy__btnnum--plus
+            svg
+              use(xlink:href="#popup-buy-plus")
+        .goodpage-info__line
+        .popup-buy__row
+          label.popup-buy__receiving
+            input(type="radio" name="receiving" value="delivery" checked)
+            span Доставка
+          label.popup-buy__receiving
+            input(type="radio" name="receiving" value="pickup")
+            span Самовывоз
+        .popup-buy__pickup(style="display: none")
+          select
+            option(value="МО, Ленинский р-н, д.Горки, Промзона, вл.23 ") МО, Ленинский р-н, д.Горки, Промзона, вл.23
+            option(value="Деревянные поддоны") Деревянные поддоны
+            option(value="Поддоны ГОСТ") Поддоны ГОСТ
+        .popup-buy__delivery
+          .input-block
+            input.callback__input(type="text" name="address" placeholder=" " data-required)
+            label Адрес
+              span.input-hintreq *
+        button.btn.primary-btn.popup-buy__btn(type="submit" data-validate) Готово
+        label.callback__label
+          input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
+          span Даю согласие на
+            a(href="#") обработку персональных данных

@@ -117,6 +117,7 @@
   &__label {
     display: flex;
     cursor: pointer;
+    margin-top: 3rem;
     input {
       &:checked + span:after {
         content: '';
@@ -129,6 +130,9 @@
         border-bottom: 0.2rem solid var(--black-line);
         transform: rotate(-45deg);
       }
+      &:focus + span {
+        color: var(--orange);
+      }
       &.input-err + span:before {
         border-color: var(--error);
       }
@@ -139,8 +143,21 @@
     span {
       position: relative;
       display: block;
-      margin-top: 3rem;
       padding-left: 4rem;
+      transition: color 0.2s;
+      @include hover {
+        &:hover {
+          color: var(--orange);
+        }
+        &:active {
+          color: var(--orange-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--orange-click);
+        }
+      }
       &:before {
         content: '';
         position: absolute;

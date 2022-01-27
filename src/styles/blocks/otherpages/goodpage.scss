@@ -131,17 +131,15 @@
             }
           }
           &:active {
-            color: var(--orange-click);
-            svg {
-              fill: var(--orange-click);
+            img {
+              transform: scale(1.05);
             }
           }
         }
         @include active {
           &:active {
-            color: var(--orange-click);
-            svg {
-              fill: var(--orange-click);
+            img {
+              transform: scale(1.05);
             }
           }
         }
@@ -162,20 +160,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include hover {
-        &:hover,
-        &:focus {
-          color: var(--blue);
-        }
-        &:active {
-          color: var(--blue-click);
-        }
-      }
-      @include active {
-        &:active {
-          color: var(--blue-click);
-        }
-      }
       &[disabled] {
         background: var(--platinum);
         color: var(--silver);

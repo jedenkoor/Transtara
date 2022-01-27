@@ -1,11 +1,13 @@
 import Swiper, { Navigation, Pagination, EffectFade } from 'swiper'
 import IMask from 'imask'
 import { Fancybox } from '@fancyapps/ui'
-import '@fancyapps/ui/dist/fancybox.css'
+import Choices from 'choices.js'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
+import '@fancyapps/ui/dist/fancybox.css'
+import 'choices.js/public/assets/styles/choices.min.css'
 
 Swiper.use([Navigation, Pagination, EffectFade])
 
@@ -35,8 +37,7 @@ class Init {
 
     Fancybox.bind('[data-fancybox][data-src]', {
       dragToClose: false,
-      mainClass: 'popup__wrap',
-      ScrollLock: false
+      mainClass: 'popup__wrap'
     })
 
     this.actions().initPhoneMask()
@@ -66,6 +67,13 @@ class Init {
       const hidetextBlock = document.querySelectorAll('.hidetext')
       hidetextBlock.forEach((item) => {
         this.actions().initHideText(item)
+      })
+    }
+
+    if (document.querySelectorAll('select').length) {
+      const selects = document.querySelectorAll('select')
+      selects.forEach((item) => {
+        this.actions().initSelects(item)
       })
     }
   }
@@ -119,79 +127,95 @@ class Init {
       })
     })
 
-    if (document.querySelectorAll('.accordion-btn').length) {
-      const accordionBtn = document.querySelectorAll('.accordion-btn')
-      accordionBtn.forEach((item) => {
-        item.addEventListener('click', function (e) {
-          e.preventDefault()
-          _this.actions().toggleAccordion(this)
-        })
+    const accordionBtn = document.querySelectorAll('.accordion-btn')
+    accordionBtn.forEach((item) => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault()
+        _this.actions().toggleAccordion(this)
       })
-    }
+    })
 
-    if (document.querySelectorAll('.hidetext__btn').length) {
-      const hidetextBtn = document.querySelectorAll('.hidetext__btn')
-      hidetextBtn.forEach((item) => {
-        item.addEventListener('click', function (e) {
-          e.preventDefault()
-          _this.actions().toggleHideText(this)
-        })
+    const hidetextBtn = document.querySelectorAll('.hidetext__btn')
+    hidetextBtn.forEach((item) => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault()
+        _this.actions().toggleHideText(this)
       })
-    }
+    })
 
-    if (document.querySelectorAll('.submenu').length) {
-      const submenu = document.querySelectorAll('.submenu')
-      submenu.forEach((item) => {
-        item.addEventListener(
-          'focus',
-          function () {
-            _this.actions().showSubmenu(this)
-          },
-          true
-        )
-      })
-    }
+    const submenu = document.querySelectorAll('.submenu')
+    submenu.forEach((item) => {
+      item.addEventListener(
+        'focus',
+        function () {
+          _this.actions().showSubmenu(this)
+        },
+        true
+      )
+      item.addEventListener(
+        'blur',
+        function () {
+          _this.actions().hideSubmenu(this)
+        },
+        true
+      )
+    })
 
-    if (document.querySelectorAll('.submenu').length) {
-      const submenu = document.querySelectorAll('.submenu')
-      submenu.forEach((item) => {
-        item.addEventListener(
-          'blur',
-          function () {
-            _this.actions().hideSubmenu(this)
-          },
-          true
-        )
+    const catalogNames = document.querySelectorAll('.catalog-filters__name')
+    catalogNames.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
       })
-    }
+    })
 
-    if (document.querySelectorAll('.catalog-filters__name').length) {
-      const catalogNames = document.querySelectorAll('.catalog-filters__name')
-      catalogNames.forEach((item) => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault()
-        })
+    const labelCheckboxes = document.querySelectorAll('input[type="checkbox"] + span')
+    labelCheckboxes.forEach((item) => {
+      item.addEventListener('click', () => {
+        _this.actions().removeFocus()
       })
-    }
+    })
 
-    if (document.querySelectorAll('input[type="checkbox"] + span').length) {
-      const labelCheckboxes = document.querySelectorAll('input[type="checkbox"] + span')
-      labelCheckboxes.forEach((item) => {
-        item.addEventListener('click', () => {
-          _this.actions().removeFocus()
-        })
+    const filterInputs = document.querySelectorAll('.catalog__filters input')
+    filterInputs.forEach((item) => {
+      item.addEventListener('change', function () {
+        _this.actions().toggleClearFilter(this)
+        _this.actions().checkCategory(this)
       })
-    }
+    })
 
-    if (document.querySelectorAll('.catalog__filters input').length) {
-      const filterInputs = document.querySelectorAll('.catalog__filters input')
-      filterInputs.forEach((item) => {
-        item.addEventListener('change', function () {
-          _this.actions().toggleClearFilter(this)
-          _this.actions().checkCategory(this)
-        })
+    const numInputs = document.querySelectorAll('input[data-type="num"]')
+    numInputs.forEach((item) => {
+      item.addEventListener('input', function () {
+        _this.actions().inputNum(this)
       })
-    }
+      item.addEventListener('blur', function () {
+        _this.actions().blurNum(this)
+      })
+    })
+
+    const minusBtns = document.querySelectorAll('.popup-buy__btnnum--minus')
+    minusBtns.forEach((item) => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault()
+        _this.actions().minusNum(this)
+      })
+    })
+
+    const plusBtns = document.querySelectorAll('.popup-buy__btnnum--plus')
+    plusBtns.forEach((item) => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault()
+        _this.actions().plusNum(this)
+      })
+    })
+
+    const receivingInputs = document.querySelectorAll('.popup-buy__receiving input[type="radio"]')
+    receivingInputs.forEach((item) => {
+      item.addEventListener('input', function (e) {
+        e.preventDefault()
+        _this.actions().receivingChanged(this)
+      })
+    })
   }
 
   actions() {
@@ -449,6 +473,43 @@ class Init {
           name.classList.add('active')
         } else {
           name.classList.remove('active')
+        }
+      },
+      inputNum(el) {
+        el.value = el.value.replace(/[^0-9]/g, '')
+      },
+      blurNum(el) {
+        el.value = +el.value < 1 ? 1 : el.value.replace(/^0+/, '')
+      },
+      minusNum(el) {
+        const input = el.closest('form').querySelector('input[data-type="num"]')
+        input.value = +input.value === 1 ? 1 : +input.value - 1
+      },
+      plusNum(el) {
+        const input = el.closest('form').querySelector('input[data-type="num"]')
+        input.value = +input.value + 1
+      },
+      initSelects(el) {
+        ;(() =>
+          new Choices(el, {
+            searchEnabled: false,
+            shouldSort: false,
+            itemSelectText: '',
+            classNames: {
+              highlightedState: 'a'
+            }
+          }))()
+      },
+      receivingChanged(el) {
+        console.log(el.value)
+        const pickup = document.querySelector('.popup-buy__pickup')
+        const delivery = document.querySelector('.popup-buy__delivery')
+        if (el.value === 'pickup') {
+          pickup.style.display = null
+          delivery.style.display = 'none'
+        } else {
+          delivery.style.display = null
+          pickup.style.display = 'none'
         }
       }
     }

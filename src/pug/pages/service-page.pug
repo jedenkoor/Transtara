@@ -1,0 +1,13 @@
+extends ../template
+
+block variables
+  - var title = 'Страница услуги'
+  - var breadcrumbs = ['Главная', 'Услуги', 'Хранение паллетов']
+
+block content
+  section.service.margin-section
+    .container.service__content
+      .service__main
+      aside.service__aside.service__img
+
+  include ../includes/callback

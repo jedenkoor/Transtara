@@ -39,7 +39,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@fancyapps/ui": "^4.0.20",
+    "@fancyapps/ui": "^4.0.0-alpha.4",
+    "choices.js": "^10.0.0",
     "imask": "^6.2.2",
     "normalize.css": "^8.0.1",
     "swiper": "^7.4.1"
