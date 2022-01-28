@@ -297,9 +297,6 @@ input[type='number'] {
       transition: 0.2s;
     }
   }
-  &-hintreq {
-    color: var(--orange);
-  }
 }
 
 input:not([type]),
@@ -528,5 +525,6 @@ input[type='password'] {
 @import 'blocks/otherpages/history';
 @import 'blocks/otherpages/catalog';
 @import 'blocks/otherpages/goodpage';
+@import 'blocks/otherpages/service';
 @import 'blocks/otherpages/404';
 @import 'blocks/otherpages/text';

@@ -1,0 +1,18 @@
+extends ../template
+
+block variables
+  - var title = 'Блог'
+  - var breadcrumbs = ['Главная', 'Блог']
+
+block content
+  section.blog.margin-section
+    .container
+      .blog__top
+        h1.title Блог
+      ul.blog__list
+        - for (var i = 0; i < 9; i++)
+          li.blog__item.blog-item
+            a.blog-item__link(href="#")
+              picture.blog-item__picture
+                source(srcset="/static/images/service.jpg" type="image/webp")
+                img.blog-item__img(src="/static/images/service.jpg" alt="Кому нужна Фумигация?")

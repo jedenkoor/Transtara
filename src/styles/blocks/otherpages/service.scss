@@ -1,0 +1,60 @@
+.service {
+  &__content {
+    display: flex;
+  }
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 29.3%;
+    margin-left: 6.05%;
+  }
+  &__picture {
+    position: relative;
+    display: block;
+    height: 35.2rem;
+    margin-bottom: 7.2rem;
+    filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+  }
+  &__col {
+    position: relative;
+    flex: 1;
+  }
+  &__callback {
+    position: sticky;
+    top: 10rem;
+    padding: 2.4rem 3.2rem 3.2rem;
+    background: var(--background-card);
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.12);
+    border-radius: 0.4rem;
+  }
+  &-callback {
+    text-align: center;
+    &__title {
+      margin-bottom: 1.6rem;
+      font-weight: 600;
+    }
+    &__text {
+      margin-bottom: 1.6rem;
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.8rem 0;
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

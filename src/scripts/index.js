@@ -37,7 +37,8 @@ class Init {
 
     Fancybox.bind('[data-fancybox][data-src]', {
       dragToClose: false,
-      mainClass: 'popup__wrap'
+      mainClass: 'popup__wrap',
+      keyboard: false
     })
 
     this.actions().initPhoneMask()
@@ -83,13 +84,6 @@ class Init {
 
     window.addEventListener('scroll', () => {
       _this.actions().handleScroll()
-    })
-
-    const scrollBLocks = document.querySelectorAll('.scroll-block')
-    scrollBLocks.forEach((item) => {
-      document.addEventListener('scroll', () => {
-        _this.actions().scrollBlock(item)
-      })
     })
 
     const emailInput = document.querySelectorAll('input[data-type="email"]')
@@ -216,6 +210,13 @@ class Init {
         _this.actions().receivingChanged(this)
       })
     })
+
+    const popups = document.querySelectorAll('.popup')
+    popups.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        _this.actions().popupClick(e)
+      })
+    })
   }
 
   actions() {
@@ -237,6 +238,11 @@ class Init {
           clearTimeout(this.scrollTimer)
           this.scrollTimer = 0
         }, 100)
+
+        const scrollBLocks = document.querySelectorAll('.scroll-block')
+        scrollBLocks.forEach((item) => {
+          this.scrollBlock(item)
+        })
       },
       scrollBlock: (el) => {
         this.directionScroll.push(window.pageYOffset)
@@ -490,18 +496,31 @@ class Init {
         input.value = +input.value + 1
       },
       initSelects(el) {
-        ;(() =>
-          new Choices(el, {
-            searchEnabled: false,
-            shouldSort: false,
-            itemSelectText: '',
-            classNames: {
-              highlightedState: 'a'
-            }
-          }))()
+        const select = new Choices(el, {
+          searchEnabled: false,
+          shouldSort: false,
+          itemSelectText: '',
+          classNames: {
+            highlightedState: 'a'
+          }
+        })
+        select.passedElement.element.addEventListener(
+          'showDropdown',
+          () => {
+            const choicesItems = document.querySelectorAll('.choices__item')
+            choicesItems.forEach((item) => {
+              item.addEventListener('click', (e) => {
+                select.setChoiceByValue(item.getAttribute('data-value'))
+                select.hideDropdown()
+                e.preventDefault()
+                return false
+              })
+            })
+          },
+          false
+        )
       },
       receivingChanged(el) {
-        console.log(el.value)
         const pickup = document.querySelector('.popup-buy__pickup')
         const delivery = document.querySelector('.popup-buy__delivery')
         if (el.value === 'pickup') {
@@ -511,6 +530,20 @@ class Init {
           delivery.style.display = null
           pickup.style.display = 'none'
         }
+      },
+      popupClick(event) {
+        // let flag = false
+        // const focusableElements = document.querySelectorAll(
+        //   '.popup a[href], .popup button, .popup input, .popup textarea, .popup select'
+        // )
+        // focusableElements.forEach((item) => {
+        //   if (item === event.target) {
+        //     flag = true
+        //   }
+        // })
+        // if (!flag) {
+        //   document.activeElement.blur()
+        // }
       }
     }
   }
