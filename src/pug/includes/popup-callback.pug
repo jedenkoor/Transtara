@@ -1,0 +1,18 @@
+form.popup.popup-callback#callback-popup(style="display: none")
+  .popup-callback__title Рассчет стоимости
+  .input-block
+    input.callback__input(type="text" name="name" placeholder=" " data-required)
+    label Имя
+      span.star *
+  .input-block
+    input.callback__input(type="tel" name="phone" placeholder=" " data-type="tel" data-required)
+    label Телефон
+      span.star *
+  button.btn.primary-btn.popup-callback__btn(type="submit" data-validate)
+    svg
+      use(xlink:href="#callback")
+    | Отправить
+  label.callback__label
+    input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
+    span Даю согласие на
+      a(href="#") обработку персональных данных

@@ -17,6 +17,7 @@ class Init {
     this.scrollTimer = 0
     this.directionScroll = [0]
     this.count = -100
+    this.fancybox = Fancybox
   }
 
   init() {
@@ -30,15 +31,42 @@ class Init {
       infinite: false,
       closeButton: 'outside',
       dragToClose: false,
+      showClass: false,
+      hideClass: false,
+      animated: false,
+      Image: {
+        zoom: false
+      },
       Thumbs: {
         autoStart: false
       }
     })
 
-    Fancybox.bind('[data-fancybox][data-src]', {
+    Fancybox.bind('[data-fancybox][data-src="#menu-popup"]', {
+      dragToClose: false,
+      mainClass: 'popup__menu',
+      keyboard: false,
+      autoFocus: false,
+      showClass: 'fancybox-fadeIn',
+      hideClass: 'fancybox-fadeOut',
+      on: {
+        init: () => {
+          const mobileMenuBtn = document.querySelector('.header__menu--wrap')
+          mobileMenuBtn.classList.add('active')
+        },
+        closing: () => {
+          const mobileMenuBtn = document.querySelector('.header__menu--wrap')
+          mobileMenuBtn.classList.remove('active')
+        }
+      }
+    })
+
+    Fancybox.bind('[data-fancybox][data-src]:not([data-src="#menu-popup"])', {
       dragToClose: false,
       mainClass: 'popup__wrap',
-      keyboard: false
+      keyboard: false,
+      showClass: 'fancybox-fadeIn',
+      hideClass: 'fancybox-fadeOut'
     })
 
     this.actions().initPhoneMask()
@@ -137,23 +165,25 @@ class Init {
       })
     })
 
-    const submenu = document.querySelectorAll('.submenu')
-    submenu.forEach((item) => {
-      item.addEventListener(
-        'focus',
-        function () {
-          _this.actions().showSubmenu(this)
-        },
-        true
-      )
-      item.addEventListener(
-        'blur',
-        function () {
-          _this.actions().hideSubmenu(this)
-        },
-        true
-      )
-    })
+    if (document.documentElement.clientWidth > 1200) {
+      const submenu = document.querySelectorAll('.submenu')
+      submenu.forEach((item) => {
+        item.addEventListener(
+          'focus',
+          function () {
+            _this.actions().showSubmenu(this)
+          },
+          true
+        )
+        item.addEventListener(
+          'blur',
+          function () {
+            _this.actions().hideSubmenu(this)
+          },
+          true
+        )
+      })
+    }
 
     const catalogNames = document.querySelectorAll('.catalog-filters__name')
     catalogNames.forEach((item) => {
@@ -211,10 +241,91 @@ class Init {
       })
     })
 
-    const popups = document.querySelectorAll('.popup')
-    popups.forEach((item) => {
-      item.addEventListener('click', (e) => {
-        _this.actions().popupClick(e)
+    const reviews = document.querySelectorAll('.reviews__item')
+    reviews.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().toggleReview(this)
+      })
+    })
+
+    document.querySelector('.header-info__search').addEventListener('click', () => {
+      _this.actions().toggleSearch()
+    })
+
+    document.querySelector('.header-search__label input').addEventListener('focus', function () {
+      _this.actions().showSearchResult(this)
+    })
+
+    document.querySelector('.header-search__label input').addEventListener('blur', function () {
+      _this.actions().closeSearchResult(this)
+    })
+
+    if (document.documentElement.clientWidth > 1200) {
+      document.querySelector('.header-search').addEventListener(
+        'focus',
+        function () {
+          _this.actions().showSearchResult(this)
+        },
+        true
+      )
+      document.querySelector('.header-search').addEventListener(
+        'blur',
+        function () {
+          _this.actions().closeSearchResult(this)
+        },
+        true
+      )
+    }
+
+    const tabletMenu = document.querySelector('.header__wrap--tablet .header-list__item--menu > button')
+    tabletMenu.addEventListener('click', function () {
+      _this.actions().openTabletMenu(this)
+    })
+
+    const tabletSubmenu = document.querySelectorAll(
+      '.header__wrap--tablet .header-list-submenu__item--submenu > .header-list-submenu__link'
+    )
+    tabletSubmenu.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().openTabletSubmenu(this)
+      })
+    })
+
+    document.addEventListener('click', (e) => {
+      if (
+        e.target !== document.querySelector('.header__wrap--tablet .header-list__item--menu') &&
+        e.target.closest('.header__wrap--tablet .header-list__item--menu') === null
+      ) {
+        document.querySelector('.header__wrap--tablet .header-list__item--menu').classList.remove('active')
+        document.querySelector('.header__wrap--tablet .header-list__item--menu').classList.remove('active-submenu')
+      }
+    })
+
+    const tabletSubmenuBack = document.querySelectorAll('.header-list-submenu__item--back')
+    tabletSubmenuBack.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().closeTabletSubmenu(this)
+      })
+    })
+
+    const mobileMenu = document.querySelectorAll('.header__menu')
+    mobileMenu.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().closeMobileMenu(this)
+      })
+    })
+
+    const popupMenuSubmenu = document.querySelectorAll('.popup-menu__item--submenu > .popup-menu__link')
+    popupMenuSubmenu.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().openPopupMenuSubmenu(this)
+      })
+    })
+
+    const popupMenuSubmenuClose = document.querySelectorAll('.popup-menu__link--back')
+    popupMenuSubmenuClose.forEach((item) => {
+      item.addEventListener('click', function () {
+        _this.actions().closePopupMenuSubmenu(this)
       })
     })
   }
@@ -230,10 +341,20 @@ class Init {
           return
         }
         this.scrollTimer = setTimeout(() => {
-          if (window.scrollY > 101) {
-            document.querySelector('.header__wrap').classList.add('scroll')
+          const headerWraps = document.querySelectorAll('.header__wrap')
+          if (window.scrollY > 0) {
+            document.querySelector('.header').classList.add('nosearch')
           } else {
-            document.querySelector('.header__wrap').classList.remove('scroll')
+            document.querySelector('.header').classList.remove('nosearch')
+          }
+          if (window.scrollY > 101) {
+            headerWraps.forEach((item) => {
+              item.classList.add('scroll')
+            })
+          } else {
+            headerWraps.forEach((item) => {
+              item.classList.remove('scroll')
+            })
           }
           clearTimeout(this.scrollTimer)
           this.scrollTimer = 0
@@ -531,19 +652,79 @@ class Init {
           pickup.style.display = 'none'
         }
       },
-      popupClick(event) {
-        // let flag = false
-        // const focusableElements = document.querySelectorAll(
-        //   '.popup a[href], .popup button, .popup input, .popup textarea, .popup select'
-        // )
-        // focusableElements.forEach((item) => {
-        //   if (item === event.target) {
-        //     flag = true
-        //   }
-        // })
-        // if (!flag) {
-        //   document.activeElement.blur()
-        // }
+      toggleReview(el) {
+        const reviews = document.querySelectorAll('.reviews__item:not(.reviews__item--full)')
+        const reviewText = el.querySelector('.reviews-item__text').innerHTML
+        if (!el.classList.contains('reviews__item--active')) {
+          reviews.forEach((item) => {
+            item.classList.remove('reviews__item--active')
+            item.querySelector('.reviews-item__btn span').innerText = 'Показать'
+            if (document.querySelector('.reviews__item--full')) {
+              document.querySelector('.reviews__item--full').remove()
+            }
+          })
+
+          el.classList.add('reviews__item--active')
+          el.querySelector('.reviews-item__btn span').innerText = 'Скрыть'
+          if (Array.from(reviews).indexOf(el) % 2 === 0 && document.documentElement.clientWidth > 1024) {
+            el.nextElementSibling.insertAdjacentHTML(
+              'afterend',
+              `
+                  <li class="reviews__item reviews-item reviews__item--full">
+                    <p class="reviews-item__text">${reviewText}</p>
+                  </li>
+                `
+            )
+          } else {
+            el.insertAdjacentHTML(
+              'afterend',
+              `
+                  <li class="reviews__item reviews-item reviews__item--full reviews__item--right">
+                    <p class="reviews-page-item__content">${reviewText}</p>
+                  </li>
+                `
+            )
+          }
+        } else {
+          el.classList.remove('reviews__item--active')
+          el.querySelector('.reviews-item__btn span').innerText = 'Показать'
+          if (document.querySelector('.reviews__item--full')) {
+            document.querySelector('.reviews__item--full').remove()
+          }
+        }
+      },
+      toggleSearch() {
+        const header = document.querySelector('.header')
+        header.classList.toggle('search')
+      },
+      showSearchResult(el) {
+        const search = el.closest('.header-search')
+        search.querySelector('.header-search__wrap').classList.add('active')
+      },
+      closeSearchResult(el) {
+        const search = el.closest('.header-search')
+        search.querySelector('.header-search__wrap').classList.remove('active')
+      },
+      openTabletMenu(el) {
+        el.closest('.header-list__item--menu').classList.toggle('active')
+        el.closest('.header-list__item--menu').classList.remove('active-submenu')
+      },
+      openTabletSubmenu(el) {
+        el.closest('.header-list__item--menu').classList.add('active-submenu')
+      },
+      closeTabletSubmenu(el) {
+        el.closest('.header-list__item--menu').classList.remove('active-submenu')
+      },
+      closeMobileMenu(el) {
+        if (el.classList.contains('header__menu--hide')) {
+          Fancybox.getInstance().close()
+        }
+      },
+      openPopupMenuSubmenu(el) {
+        el.nextElementSibling.classList.add('active')
+      },
+      closePopupMenuSubmenu(el) {
+        el.closest('.popup-menu__submenu').classList.remove('active')
       }
     }
   }

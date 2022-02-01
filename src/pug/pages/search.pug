@@ -1,0 +1,53 @@
+extends ../template
+
+block variables
+  - var title = 'Поиск'
+  - var breadcrumbs = ['Главная', 'Поиск']
+
+block content
+  section.search.margin-section
+    .container
+      .search__content
+        h1.title Поиск по сайту
+        form.search__label
+          input(type="text" placeholder="Поиск")
+          button(type="submit")
+            svg
+              use(xlink:href="#search")
+        .search__amount Найдено 993 результата
+        //.search__amount По вашему запросу ничего не найдено
+        ul.search__list
+          li.search__item.search-item.search__item--good
+            a.search-item__link(href="#")
+              picture.search-item__picture
+                img.search-item__img(src="/static/images/card1.png" alt="Европоддон фумигированный EUR EPAL, 2 сорт")
+              .search-item__info
+                span.search-item__category Товар
+                p.search-item__name Европоддон фумигированный EUR EPAL, 2 сорт Европоддон фумигирова фумигированный EUR EPAL, 2 сорт Европоддон фумигирова
+              .search-item__btn
+                svg
+                  use(xlink:href="#goodpage-next")
+          li.search__item.search-item.search__item--service
+            a.search-item__link(href="#")
+              picture.search-item__picture
+                img.search-item__img(src="/static/images/about.jpg" alt="Фумигация")
+              .search-item__info
+                span.search-item__category Услуги
+                p.search-item__name Фумигация
+              .search-item__btn
+                svg
+                  use(xlink:href="#goodpage-next")
+          li.search__item.search-item.search__item--blog
+            a.search-item__link(href="#")
+              picture.search-item__picture
+                img.search-item__img(src="/static/images/service.jpg" alt=" Как ухаживать за поддонами?")
+              .search-item__info
+                span.search-item__category Блог
+                p.search-item__name Как ухаживать за поддонами? Как ухаживать за поддонами? Как ухаживать за поддонами? Как ухаживать за поддонами?
+              .search-item__btn
+                svg
+                  use(xlink:href="#goodpage-next")
+
+        include ../includes/pagination
+
+  include ../includes/callback

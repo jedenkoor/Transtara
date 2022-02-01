@@ -10,16 +10,28 @@
   h2 {
     font-weight: 500;
     font-size: 2.4rem;
+    @include w767 {
+      font-size: clamp(2rem, calc(2rem + 0.4 * (100vw - 36rem) / 40.8), 2.4rem);
+    }
     &:not(:first-child) {
       margin-top: 3.6rem;
+      @include w767 {
+        margin-top: 2.6rem;
+      }
     }
     &:not(:last-child) {
       margin-bottom: 3.6rem;
+      @include w767 {
+        margin-bottom: 2.6rem;
+      }
     }
   }
   h3 {
     font-weight: 600;
     font-size: 1.6rem;
+    @include w767 {
+      font-size: clamp(1.4rem, calc(1.4rem + 0.2 * (100vw - 36rem) / 40.8), 1.6rem);
+    }
     &:not(:first-child) {
       margin-top: 2.4rem;
     }
@@ -39,6 +51,9 @@
     li {
       position: relative;
       padding-left: 4rem;
+      @include w767 {
+        padding-left: 3.6rem;
+      }
       &:before {
         content: '';
         position: absolute;
@@ -48,6 +63,10 @@
         height: 0.8rem;
         border-radius: 50%;
         background-color: var(--orange);
+        @include w767 {
+          top: 0.6rem;
+          left: 0.6rem;
+        }
       }
       &:not(:last-child) {
         margin-bottom: 1.6rem;
@@ -67,6 +86,9 @@
     li {
       position: relative;
       padding-left: 4rem;
+      @include w767 {
+        padding-left: 3.6rem;
+      }
       &:before {
         counter-increment: olli;
         content: counters(olli, '.', decimal-leading-zero);
@@ -88,6 +110,9 @@
     background: var(--background-card);
     box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+    @include w767 {
+      padding: 2.4rem 3.2rem;
+    }
     &:not(:first-child) {
       margin-top: 4.8rem;
     }
@@ -148,6 +173,10 @@
       width: 2.4rem;
       height: 2.4rem;
       transition: opacity 0.2s;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
     }
     &:before {
       background: url('../images/text-link-click.svg') center/contain no-repeat;
@@ -168,14 +197,17 @@
       margin-bottom: 4.8rem;
     }
   }
+  picture {
+    display: block;
+    &:not(:first-child) {
+      margin-top: 2.4rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+  }
   img {
     width: 100%;
     border-radius: 0.8rem;
-    &:not(:first-child) {
-      margin-top: 4.8rem;
-    }
-    &:not(:last-child) {
-      margin-bottom: 4.8rem;
-    }
   }
 }

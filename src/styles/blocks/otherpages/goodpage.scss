@@ -7,6 +7,13 @@
     display: grid;
     grid-template-columns: 35.2rem calc(100% - 42.4rem);
     grid-gap: 7.2rem;
+    @include w1023 {
+      grid-template-columns: 34.2rem calc(100% - 37.8rem);
+      grid-gap: 3.6rem;
+    }
+    @include w767 {
+      display: block;
+    }
   }
   &__info {
     position: sticky;
@@ -51,6 +58,9 @@
       align-items: center;
       justify-content: space-between;
       margin: 5.2rem 0;
+      @include w767 {
+        margin: 3.6rem 0;
+      }
     }
     &__price {
       display: flex;
@@ -60,12 +70,15 @@
       > span {
         display: inline-block;
         margin-right: 1rem;
-        font-size: 2.3rem;
+        font-size: 2.4rem;
       }
     }
     &__btn {
       flex: 1;
       padding: 0.8rem 0;
+      @include w767 {
+        padding: 1rem 0;
+      }
     }
     &__text {
       margin-bottom: 2.4rem;
@@ -98,6 +111,9 @@
           }
         }
       }
+      @include w767 {
+        padding: 1.8rem 3.2rem;
+      }
       & + & {
         margin-top: 2.4rem;
       }
@@ -106,12 +122,20 @@
         height: 2.4rem;
         fill: var(--orange);
         transition: fill 0.2s;
+        @include w767 {
+          width: 2rem;
+          height: 2rem;
+        }
       }
     }
   }
   &__gallery {
     position: relative;
     padding-bottom: 7.2rem;
+    @include w767 {
+      margin-bottom: 5.2rem;
+      padding-bottom: 5.6rem;
+    }
   }
   &-gallery {
     &__wrapper {
@@ -130,11 +154,6 @@
               transform: scale(1.05);
             }
           }
-          &:active {
-            img {
-              transform: scale(1.05);
-            }
-          }
         }
         @include active {
           &:active {
@@ -149,7 +168,14 @@
         margin: 0 auto;
         object-fit: contain;
         transition: transform ease 0.3s;
-        -webkit-backface-visibility: hidden;
+        will-change: transform;
+        @include w1023 {
+          height: 34.3rem;
+        }
+        @include w767 {
+          width: 100%;
+          height: auto;
+        }
       }
     }
     &__arr {
@@ -167,13 +193,24 @@
       }
       &--prev {
         right: 13.5rem;
+        @include w767 {
+          right: auto;
+          left: 2.4rem;
+        }
       }
       &--next {
         right: 0;
+        @include w767 {
+          right: 2.4rem;
+        }
       }
       svg {
         width: 2.4rem;
         height: 2.4rem;
+        @include w767 {
+          width: 2rem;
+          height: 2rem;
+        }
       }
     }
     &__pagination {
@@ -185,11 +222,30 @@
       width: max-content;
       font-weight: 500;
       font-size: 1.6rem;
+      @include w767 {
+        width: auto;
+        right: 6.4rem;
+        left: 6.4rem;
+        text-align: center;
+        transform: none;
+      }
       span {
         margin: 0 0.65rem;
         &.swiper-pagination-current {
           color: var(--orange);
         }
+      }
+    }
+  }
+  &__text {
+    @include w767 {
+      display: none;
+    }
+    &--mobile {
+      display: none;
+      @include w767 {
+        display: block;
+        margin-top: 12rem;
       }
     }
   }

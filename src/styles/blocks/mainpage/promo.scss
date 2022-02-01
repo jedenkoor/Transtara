@@ -3,7 +3,14 @@
     height: 50rem;
     padding: 4.4rem 7.2rem 7.2rem;
     border-radius: 0.8rem;
+    background-color: var(--background-card);
+    background-position: left center;
+    background-size: contain;
+    background-repeat: no-repeat;
     filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
+    @include w1200 {
+      background-position: -13rem center;
+    }
   }
   &__wrap {
     display: flex;

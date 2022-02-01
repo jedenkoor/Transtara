@@ -1,9 +1,7 @@
-.popup.popup-buy#buy(style="display: none")
-  .popup-buy__title--tablet Заявка
+.popup.popup-buy#buy-popup(style="display: none")
   .popup-buy__content
     .popup-buy__colwrap
       .popup-buy__col
-        p.popup-buy__name--tablet Европоддон фумигированный EUR EPAL ГОСТ 33757-2016, 2 сорт
         ul.popup-buy__images.popup-buy-images
           li.popup-buy-images__item
             picture.popup-buy-images__picture
@@ -71,6 +69,7 @@
           span.goodpage-info__property 144 мм
     .popup-buy__colwrap
       .popup-buy__title Заявка
+      p.popup-buy__name Европоддон фумигированный EUR EPAL ГОСТ 33757-2016, 2 сорт
       form.popup-buy__col
         .input-block
           input.callback__input(type="text" name="name" placeholder=" " data-required)
@@ -98,7 +97,7 @@
           label.popup-buy__receiving
             input(type="radio" name="receiving" value="pickup")
             span Самовывоз
-        .popup-buy__pickup(style="display: none")
+        .popup-buy__pickup(style="display: none" data-label="Адрес")
           select
             option(value="МО, Ленинский р-н, д.Горки, Промзона, вл.23 ") МО, Ленинский р-н, д.Горки, Промзона, вл.23
             option(value="Деревянные поддоны") Деревянные поддоны

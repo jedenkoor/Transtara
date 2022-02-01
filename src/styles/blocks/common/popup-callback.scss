@@ -1,0 +1,75 @@
+.popup-callback {
+  width: 49.6rem;
+  padding: 5.2rem 7.2rem 7.2rem;
+  @include w1023 {
+    width: 45.4rem;
+  }
+  @include w767 {
+    width: 100%;
+    padding: 4.3rem 3.2rem 5.2rem;
+  }
+  & > .carousel__button.is-close {
+    width: 4rem;
+    height: 4rem;
+    top: 5.2rem;
+    right: 7.2rem;
+    @include w767 {
+      top: 3.6rem;
+      right: 3.2rem;
+    }
+    svg {
+      color: var(--black-line);
+      filter: none;
+    }
+  }
+  &__title {
+    margin-bottom: 5.4rem;
+    font-weight: 600;
+    font-size: 2.4rem;
+    color: var(--black-text);
+    @include w767 {
+      margin-bottom: 4.3rem;
+      font-size: 2rem;
+    }
+  }
+  .input-block {
+    margin-bottom: 1.6rem;
+    input {
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        box-shadow: 0 0 0 1000px var(--background) inset;
+        -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: var(--black-text);
+      }
+      &:not(:placeholder-shown) + label,
+      &:focus + label {
+        background-color: var(--background);
+      }
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+    padding: 0.8rem 0;
+    @include w767 {
+      padding: 1rem 0;
+    }
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+  .callback__label {
+    margin-top: 0;
+  }
+}

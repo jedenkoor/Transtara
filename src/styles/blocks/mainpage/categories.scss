@@ -4,6 +4,10 @@
     grid-template-columns: repeat(3, 29.3%);
     grid-gap: calc((100% - 87.9%) / 2);
     list-style: none;
+    @include w1200 {
+      grid-template-columns: repeat(3, calc((100% - 7.2rem) / 3));
+      grid-gap: 3.6rem;
+    }
   }
   &__link {
     display: flex;

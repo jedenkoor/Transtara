@@ -75,6 +75,10 @@ body {
   &.compensate-for-scrollbar {
     overflow: visible !important;
   }
+  @include w767 {
+    font-size: clamp(1.4rem, calc(1.4rem + 0.2 * (100vw - 36rem) / 40.8), 1.6rem);
+    line-height: 1.43;
+  }
 }
 
 .sprite {
@@ -104,9 +108,6 @@ body {
 
 .margin-section {
   margin-bottom: $margin-section;
-  @include w767 {
-    margin-bottom: $mobile-margin-section;
-  }
 }
 
 *,
@@ -194,6 +195,11 @@ input[type='number'] {
   font-weight: bold;
   font-size: 3.6rem;
   line-height: 1.44;
+  @include w767 {
+    margin-bottom: 3.5rem;
+    font-size: clamp(2.6rem, calc(2.6rem + 1 * (100vw - 36rem) / 40.8), 3.6rem);
+    line-height: 1.38;
+  }
 }
 
 .btn {
@@ -206,6 +212,10 @@ input[type='number'] {
   line-height: 1.5;
   transition: background 0.2s, color 0.2s;
   cursor: pointer;
+  @include w767 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+  }
   path {
     transition: 0.2s;
   }
@@ -312,6 +322,12 @@ textarea {
   font-size: 1.6rem;
   color: var(--black-text);
   transition: border-color 0.2s;
+  @include w767 {
+    font-size: 1.4rem;
+  }
+  &::placeholder {
+    color: var(--silver);
+  }
   &:not(:placeholder-shown) + label,
   &:focus + label {
     top: -0.9rem;
@@ -367,7 +383,10 @@ input[type='password'] {
     background: none;
   }
   &__slide {
-    padding: 64px 24px;
+    padding: 6.4rem 2.4rem;
+    @include w1023 {
+      padding: 2.4rem;
+    }
   }
   &__content :focus:not(.carousel__button.is-close) {
     outline: none;
@@ -375,13 +394,64 @@ input[type='password'] {
 }
 
 .popup {
-  max-height: 52.8rem;
   background: var(--background);
   box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.12);
   border-radius: 0.8rem;
+  @include w767 {
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+  .carousel__button.is-close {
+    @include hover {
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        svg {
+          color: var(--orange);
+        }
+      }
+      &:active {
+        box-shadow: none;
+        svg {
+          color: var(--orange-click);
+        }
+      }
+    }
+    @include active {
+      &:active {
+        box-shadow: none;
+        svg {
+          color: var(--orange-click);
+        }
+      }
+    }
+    svg {
+      transition: color 0.2s;
+    }
+  }
   &__wrap {
     .fancybox__backdrop {
       background: rgba(0, 0, 0, 0.12);
+    }
+    .fancybox__slide {
+      @include w767 {
+        padding: 0;
+      }
+      &:after {
+        @include w767 {
+          margin: 0;
+        }
+      }
+    }
+  }
+  &__menu {
+    z-index: 99;
+    .fancybox {
+      &__slide {
+        padding: 0;
+      }
+      &__backdrop {
+        background: var(--background);
+      }
     }
   }
 }
@@ -412,6 +482,14 @@ input[type='password'] {
       border-right: 0.2rem solid var(--black-line);
     }
   }
+  &.is-focused {
+    .choices__list--single {
+      color: var(--orange);
+    }
+    .choices__list--dropdown .a {
+      color: var(--orange);
+    }
+  }
   &__inner {
     min-height: auto;
     padding: 0.7rem 5.4rem 0.7rem 2.3rem !important;
@@ -420,12 +498,35 @@ input[type='password'] {
     background-color: transparent;
     font-weight: 500;
     font-size: 1.6rem;
+    cursor: pointer;
+    @include hover {
+      &:hover {
+        color: var(--orange);
+      }
+      &:active {
+        color: var(--orange-click);
+      }
+    }
+    @include active {
+      &:active {
+        color: var(--orange-click);
+      }
+    }
+    @include w1200 {
+      padding: 0.7rem 4rem 0.7rem 2.3rem !important;
+    }
+    @include w767 {
+      padding: 0.9rem 4rem 0.9rem 2.3rem !important;
+      font-size: 1.4rem;
+    }
   }
   &__list {
     &--single {
       padding: 0;
+      transition: color 0.2s;
     }
     &--dropdown {
+      z-index: 2;
       top: calc(100% + 1.6rem);
       padding: 1.6rem 0;
       background: var(--background-card);
@@ -448,11 +549,11 @@ input[type='password'] {
         content: '';
         position: absolute;
         top: -1.6rem;
-        right: 2.4rem;
+        right: 2rem;
         width: 3.2rem;
         height: 1.6rem;
         margin-top: 0.2rem;
-        background: url(http://localhost:8080/images/submenu-arrow.svg) center/contain no-repeat;
+        background: url('../images/submenu-arrow.svg') center/contain no-repeat;
       }
       .choices__item {
         display: flex;
@@ -473,6 +574,9 @@ input[type='password'] {
             color: var(--orange-click);
           }
         }
+        @include w1200 {
+          padding: 0.8rem 1rem 0.8rem 1.8rem;
+        }
         &:before {
           content: '';
           width: 2rem;
@@ -482,6 +586,9 @@ input[type='password'] {
           margin-right: 1.8rem;
           border-radius: 50%;
           border: 0.2rem solid var(--black-line);
+          @include w1200 {
+            margin-right: 1rem;
+          }
         }
       }
     }
@@ -501,8 +608,32 @@ input[type='password'] {
         border-radius: 50%;
         background-color: var(--orange);
         opacity: 1;
+        @include w1200 {
+          left: 2.4rem;
+        }
+        @include w767 {
+          top: 1.6rem;
+        }
       }
     }
+  }
+}
+
+[data-label] {
+  position: relative;
+  &:before {
+    content: attr(data-label);
+    position: absolute;
+    z-index: 2;
+    top: -1rem;
+    left: 1.4rem;
+    padding: 0 1rem;
+    background-color: var(--background);
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.67;
+    color: var(--silver);
+    pointer-events: none;
   }
 }
 
@@ -513,7 +644,11 @@ input[type='password'] {
 @import 'blocks/common/reviews';
 @import 'blocks/common/faq';
 @import 'blocks/common/callback';
+@import 'blocks/common/pagination';
 @import 'blocks/common/popup-buy';
+@import 'blocks/common/popup-callback';
+@import 'blocks/common/popup-success';
+@import 'blocks/common/popup-menu';
 @import 'blocks/mainpage/banner';
 @import 'blocks/mainpage/categories';
 @import 'blocks/mainpage/promo';
@@ -526,5 +661,8 @@ input[type='password'] {
 @import 'blocks/otherpages/catalog';
 @import 'blocks/otherpages/goodpage';
 @import 'blocks/otherpages/service';
+@import 'blocks/otherpages/blog';
+@import 'blocks/otherpages/reviews';
+@import 'blocks/otherpages/search';
 @import 'blocks/otherpages/404';
 @import 'blocks/otherpages/text';

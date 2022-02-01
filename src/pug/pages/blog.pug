@@ -9,10 +9,28 @@ block content
     .container
       .blog__top
         h1.title Блог
+        .blog__sort(data-label="Сортировка")
+          select
+            option(value="Сначала новое") Сначала новое
+            option(value="Сначала старое") Сначала старое
+            option(value="По алфавиту А-Я") По алфавиту А-Я
+            option(value="По алфавиту Я-А") По алфавиту Я-А
       ul.blog__list
-        - for (var i = 0; i < 9; i++)
+        - for (var i = 0; i < 4; i++)
           li.blog__item.blog-item
             a.blog-item__link(href="#")
               picture.blog-item__picture
                 source(srcset="/static/images/service.jpg" type="image/webp")
                 img.blog-item__img(src="/static/images/service.jpg" alt="Кому нужна Фумигация?")
+              p.blog-item__name Кому нужна Фумигация?
+              span.blog-item__date 22.01.2022
+          li.blog__item.blog-item
+            a.blog-item__link(href="#")
+              picture.blog-item__picture
+                source(srcset="/static/images/about.jpg" type="image/webp")
+                img.blog-item__img(src="/static/images/about.jpg" alt="Как правильно ухаживать за Б/У паллетами?")
+              p.blog-item__name Как правильно ухаживать за Б/У паллетами?
+              span.blog-item__date 20.01.2022
+      include ../includes/pagination
+
+  include ../includes/callback

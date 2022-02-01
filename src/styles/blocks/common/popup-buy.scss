@@ -1,13 +1,30 @@
 .popup-buy {
   max-width: 120rem;
+  max-height: 52.8rem;
   padding: 0 2.5rem 0 0.7rem;
+  @include w1200 {
+    padding: 0 2.4rem 0 0;
+  }
+  @include w1023 {
+    width: 45.4rem;
+    max-height: none;
+    padding: 5.4rem 7.2rem 7.2rem;
+  }
+  @include w767 {
+    width: 100%;
+    padding: 4.3rem 3.2rem 5.2rem;
+  }
   & > .carousel__button.is-close {
     width: 4rem;
     height: 4rem;
     top: 5.2rem;
     right: 5.2rem;
+    @include w767 {
+      top: 3.6rem;
+      right: 3.2rem;
+    }
     svg {
-      color: #000;
+      color: var(--black-line);
       filter: none;
     }
   }
@@ -15,19 +32,30 @@
     display: grid;
     grid-template-columns: 37.2rem 1fr 37.2rem;
     height: 100%;
+    @include w1200 {
+      grid-template-columns: 30rem 1fr 30rem;
+    }
+    @include w1023 {
+      grid-template-columns: auto;
+    }
   }
   &__colwrap {
     position: relative;
     max-height: 52.8rem;
-    @include hover {
-      &:hover {
-        &:before {
-          pointer-events: none;
-          opacity: 0 !important;
-        }
+    &:hover,
+    &:active {
+      &:before {
+        pointer-events: none;
+        opacity: 0 !important;
       }
     }
+    @include w1023 {
+      max-height: none;
+    }
     &:not(:last-child) {
+      @include w1023 {
+        display: none;
+      }
       &:before {
         content: '';
         position: absolute;
@@ -39,13 +67,33 @@
         background: rgba(255, 255, 255, 0.72);
         opacity: 1;
         transition: opacity 0.2s;
+        @include w1200 {
+          display: none;
+        }
       }
     }
     &:last-child {
       padding-top: 5.4rem;
+      @include w1023 {
+        padding-top: 0;
+      }
+      .popup-buy__name {
+        display: none;
+        @include w1023 {
+          display: block;
+          margin-bottom: 3.2rem;
+        }
+        @include w767 {
+          margin-bottom: 2.4rem;
+        }
+      }
       .popup-buy__col {
         height: calc(100% - 7rem);
         padding-top: 0.6rem;
+        @include w1023 {
+          height: auto;
+          padding: 0;
+        }
         &::-webkit-scrollbar-thumb {
           background: none;
           box-shadow: inset 0 0 2.5rem #3e3e3e;
@@ -66,6 +114,12 @@
     height: 100%;
     padding: 5.2rem 2.4rem 5.2rem 4.5rem;
     overflow-y: auto;
+    @include w1200 {
+      padding: 5.2rem 2.4rem;
+    }
+    @include w1023 {
+      overflow: visible;
+    }
     &::-webkit-scrollbar {
       width: 0.3rem;
     }
@@ -109,8 +163,14 @@
     font-size: 2.4rem;
     margin-bottom: 2.8rem;
     padding-left: 4.5rem;
-    &--tablet {
-      display: none;
+    color: var(--black-text);
+    @include w1023 {
+      margin-bottom: 5.4rem;
+      padding-left: 0;
+    }
+    @include w767 {
+      margin-bottom: 4.3rem;
+      font-size: 2rem;
     }
   }
   &__name {
@@ -128,6 +188,9 @@
     &__item {
       &:not(:last-child) {
         margin-bottom: 5.2rem;
+        @include w1200 {
+          margin-bottom: 2.4rem;
+        }
       }
     }
     &__picture {
@@ -228,27 +291,15 @@
     }
   }
   &__pickup {
-    position: relative;
     margin-top: 2.4rem;
-    &:before {
-      content: 'Адрес';
-      position: absolute;
-      z-index: 2;
-      top: -1rem;
-      left: 1.4rem;
-      padding: 0 1rem;
-      background-color: var(--background);
-      font-weight: 500;
-      font-size: 1.2rem;
-      line-height: 1.67;
-      color: var(--silver);
-      pointer-events: none;
-    }
   }
   &__btn {
     width: 100%;
     margin-top: 2.4rem;
     margin-bottom: 1.6rem;
     padding: 0.8rem 0;
+    @include w767 {
+      padding: 1rem 0;
+    }
   }
 }

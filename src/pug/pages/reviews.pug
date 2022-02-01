@@ -1,0 +1,69 @@
+extends ../template
+
+block variables
+  - var title = 'Отзывы'
+  - var breadcrumbs = ['Главная', 'Отзывы']
+
+block content
+  section.reviews.margin-section
+    .container
+      h1.title Отзывы
+      p.reviews__text Мы постоянно работаем над повышением качества обслуживания наших клиентов. Будем очень признательны, если Вы оставите отзыв о нашей работе на <a href="#">Яндекс.Справочник.</a>
+      .reviews__wrap
+        .reviews__content
+          ul.reviews__list
+            - for (var i = 0; i < 4; i++)
+              li.reviews__item.reviews-item
+                p.reviews-item__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem distinctio iure quod soluta ut! Accusantium adipisci alias atque dolorem explicabo maxime, nihil ratione reprehenderit. Dolore eius facilis labore molestiae nostrum.
+                .reviews-item__col
+                  img.reviews-item__ava(src="/static/images/avatar.jpg" alt="")
+                  span.reviews-item__rate 5
+                    svg
+                      use(xlink:href="#reviews-rate")
+                .reviews-item__col
+                  p.reviews-item__name Екатерина Афанасьева
+                  span.reviews-item__date 20.01.2022
+                  button.btn.secondary-btn.reviews-item__btn
+                    span Показать
+                    svg.show
+                      use(xlink:href="#reviews-show")
+                    svg.hide
+                      use(xlink:href="#reviews-hide")
+              li.reviews__item.reviews-item
+                p.reviews-item__text Значимость этих проблем настолько очевидна, что современная методология разработки говорит о возможностях первоочередных требований.
+                .reviews-item__col
+                  img.reviews-item__ava(src="/static/images/avatar.jpg" alt="")
+                  span.reviews-item__rate 5
+                    svg
+                      use(xlink:href="#reviews-rate")
+                .reviews-item__col
+                  p.reviews-item__name Константин Константинов
+                  span.reviews-item__date 20.01.2022
+                  button.btn.secondary-btn.reviews-item__btn
+                    span Показать
+                    svg.show
+                      use(xlink:href="#reviews-show")
+                    svg.hide
+                      use(xlink:href="#reviews-hide")
+          include ../includes/pagination
+        aside.reviews__aside.reviews-aside
+          .reviews-aside__block
+            .reviews-aside__sort(data-label="Сортировка")
+              select
+                option(value="Сначала новое") Сначала новое
+                option(value="Сначала старое") Сначала старое
+                option(value="По алфавиту А-Я") По алфавиту А-Я
+                option(value="По алфавиту Я-А") По алфавиту Я-А
+            .reviews-aside__row
+              .reviews-aside__title 993 отзыва
+              a.reviews-aside__link(href="#") Источник
+                svg
+                  use(xlink:href="#goodpage-next")
+            ul.reviews-aside__list
+              li.reviews-aside__item(data-rate="5" data-percent="88,40%")
+              li.reviews-aside__item(data-rate="4" data-percent="14%")
+              li.reviews-aside__item(data-rate="3" data-percent="4%")
+              li.reviews-aside__item(data-rate="2" data-percent="3,10%")
+              li.reviews-aside__item(data-rate="1" data-percent="0,44%")
+
+  include ../includes/callback

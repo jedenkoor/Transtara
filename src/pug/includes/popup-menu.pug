@@ -1,0 +1,70 @@
+.popup.popup-menu#menu-popup(style="display: none")
+  .popup-menu__row
+    .header-info__col
+      .header-info__row
+        span.header-info__name Офис
+        a.header-info__phone(href="tel:+7 (495) 973-33-92") +7 (495) 973-33-92
+      .header-info__row
+        span.header-info__text ПН-ПТ 9:00 – 18:00
+    .header-info__col
+      .header-info__row
+        span.header-info__name Склад
+      .header-info__row
+        span.header-info__text 24/6
+  nav.popup-menu__nav
+    ul.popup-menu__list
+      li.popup-menu__item
+        a.popup-menu__link(href="#") Каталог
+      li.popup-menu__item
+        a.popup-menu__link(href="#") Поиск
+          svg
+            use(xlink:href="#search-mobile")
+      li.popup-menu__item
+        a.popup-menu__link(href="#") О нас
+      li.popup-menu__item.popup-menu__item--submenu
+        button.popup-menu__link Услуги
+          svg
+            use(xlink:href="#slider-next")
+        .popup-menu__submenu
+          ul.popup-menu__list
+            li.popup-menu__item
+              button.popup-menu__link.popup-menu__link--back Назад
+                svg
+                  use(xlink:href="#slider-prev")
+            li.popup-menu__item
+              a.popup-menu__link(href="#") Скупка паллетов
+            li.popup-menu__item
+              a.popup-menu__link(href="#") Хранение паллетов
+            li.popup-menu__item
+              a.popup-menu__link(href="#") Фумигация
+      li.popup-menu__item
+        a.popup-menu__link(href="#") Блог
+      li.popup-menu__item
+        a.popup-menu__link(href="#") Отзывы
+      li.popup-menu__item
+        a.popup-menu__link(href="#") Акции
+  ul.popup-menu__socials.popup-menu-socials
+    li.popup-menu-socials__item
+      a.popup-menu-socials__link(href="#")
+        svg
+          use(xlink:href="#tiktok")
+    li.popup-menu-socials__item
+      a.popup-menu-socials__link(href="#")
+        svg
+          use(xlink:href="#facebook")
+    li.popup-menu-socials__item
+      a.popup-menu-socials__link(href="#")
+        svg
+          use(xlink:href="#instagram")
+    li.popup-menu-socials__item
+      a.popup-menu-socials__link(href="#")
+        svg
+          use(xlink:href="#whatsapp")
+    li.popup-menu-socials__item
+      a.popup-menu-socials__link(href="#")
+        svg
+          use(xlink:href="#viber")
+  button.btn.secondary-btn.popup-menu__close(data-fancybox-close)
+    svg
+      use(xlink:href="#search-close")
+    | Закрыть

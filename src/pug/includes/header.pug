@@ -15,30 +15,81 @@ header.header
           span.header-info__name Склад
         .header-info__row
           span.header-info__text 24/6
-      button.btn.primary-btn.header-info__btn Рассчитать стоимость
+      button.btn.primary-btn.header-info__btn(data-fancybox data-src="#callback-popup")
+        svg
+          use(xlink:href="#callback")
+        | Рассчитать стоимость
       a.btn.secondary-btn.header-info__messenger.header-info__messenger--whatsapp(href="#")
         svg
           use(xlink:href="#whatsapp")
       a.btn.secondary-btn.header-info__messenger.header-info__messenger--viber(href="#")
         svg
           use(xlink:href="#viber")
-      .header__btns
-        button.btn.secondary-btn.header__search
+      button.btn.secondary-btn.header-info__search
+        svg.show
+          use(xlink:href="#search")
+        svg.hide
+          use(xlink:href="#search-close")
+      .header__search.header-search
+        form.header-search__label
+          input(type="text" placeholder="Поиск")
+          button(type="submit")
+            svg
+              use(xlink:href="#search")
+        // Добавить класс searched, когда есть результат поиска. И убрать его, если результатов нет
+        .header-search__wrap.searched
+          ul.search__list.header-search__list
+            li.search__item.search-item.search__item--good
+              a.search-item__link(href="#")
+                picture.search-item__picture
+                  img.search-item__img(src="/static/images/card1.png" alt="Европоддон фумигированный EUR EPAL, 2 сорт")
+                .search-item__info
+                  span.search-item__category Товар
+                  p.search-item__name Европоддон фумигированный EUR EPAL, 2 сорт
+            li.search__item.search-item.search__item--service
+              a.search-item__link(href="#")
+                picture.search-item__picture
+                  img.search-item__img(src="/static/images/about.jpg" alt="Фумигация")
+                .search-item__info
+                  span.search-item__category Услуги
+                  p.search-item__name Фумигация
+            li.search__item.search-item.search__item--blog
+              a.search-item__link(href="#")
+                picture.search-item__picture
+                  img.search-item__img(src="/static/images/service.jpg" alt=" Как ухаживать за поддонами?")
+                .search-item__info
+                  span.search-item__category Блог
+                  p.search-item__name Как ухаживать за поддонами?
+            li.search__item.search-item.search__item--good
+              a.search-item__link(href="#")
+                picture.search-item__picture
+                  img.search-item__img(src="/static/images/card1.png" alt="Европоддон фумигированный EUR EPAL, 2 сорт")
+                .search-item__info
+                  span.search-item__category Товар
+                  p.search-item__name Европоддон фумигированный EUR EPAL, 2 сорт
+          a.header-search__all(href="#") Все результаты
+            svg
+              use(xlink:href="#goodpage-next")
+      ul.header__socials.header-socials
+        li.header-socials__item
+          a.header-socials__link(href="#")
+            svg
+              use(xlink:href="#tiktok")
+        li.header-socials__item
+          a.header-socials__link(href="#")
+            svg
+              use(xlink:href="#facebook")
+        li.header-socials__item
+          a.header-socials__link(href="#")
+            svg
+              use(xlink:href="#instagram")
+      .header__menu--wrap
+        button.btn.secondary-btn.header__menu(data-fancybox data-src="#menu-popup")
           svg
-            use(xlink:href="#search")
-        ul.header__socials.header-socials
-          li.header-socials__item
-            a.header-socials__link(href="#")
-              svg
-                use(xlink:href="#tiktok")
-          li.header-socials__item
-            a.header-socials__link(href="#")
-              svg
-                use(xlink:href="#facebook")
-          li.header-socials__item
-            a.header-socials__link(href="#")
-              svg
-                use(xlink:href="#instagram")
+            use(xlink:href="#menu")
+        button.btn.secondary-btn.header__menu.header__menu--hide(data-fancybox-close)
+          svg
+            use(xlink:href="#search-close")
 
   .container
     .header__wrap
@@ -121,7 +172,7 @@ header.header
                 li.header-list-submenu__item
                   a.header-list-submenu__link(href="#") О нас
                 li.header-list-submenu__item.header-list-submenu__item--submenu
-                  a.header-list-submenu__link(href="#") Услуги
+                  button.header-list-submenu__link Услуги
                   ul.submenu.header-list-submenu__submenu.header-list-submenu-submenu
                     li.header-list-submenu-submenu__item
                       a.header-list-submenu-submenu__link(href="#") Скупка паллетов
@@ -135,3 +186,54 @@ header.header
                   a.header-list-submenu__link(href="#") Отзывы
                 li.header-list-submenu__item
                   a.header-list-submenu__link(href="#") Акции
+
+    .header__wrap.header__wrap--tablet
+      nav.header__nav
+        ul.header__list.header-list
+          li.header-list__item
+            a.btn.secondary-btn.header-list__btn(href="#")
+              svg
+                use(xlink:href="#pallety")
+              | Паллеты
+          li.header-list__item
+            a.btn.secondary-btn.header-list__btn(href="#")
+              svg
+                use(xlink:href="#kryshki")
+              | Паллетные крышки
+          li.header-list__item
+            a.btn.secondary-btn.header-list__btn(href="#")
+              svg
+                use(xlink:href="#borta")
+              | Борта
+          li.header-list__item.header-list__item--submenu.header-list__item--menu
+            button.btn.secondary-btn.header-list__btn
+              svg
+                use(xlink:href="#menu")
+              | Меню
+            .submenu.header-list__submenu.header-list-submenu
+              ul.header-list-submenu__list
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Каталог
+                li.header-list-submenu__item.header-list-submenu__item--search
+                  a.header-list-submenu__link(href="#") Поиск
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") О нас
+                li.header-list-submenu__item.header-list-submenu__item--submenu
+                  button.header-list-submenu__link Услуги
+                  ul.submenu.header-list-submenu__submenu.header-list-submenu-submenu
+                    li.header-list-submenu-submenu__item.header-list-submenu__item--back
+                      button.header-list-submenu-submenu__link Назад
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Скупка паллетов
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Хранение паллетов хранение
+                    li.header-list-submenu-submenu__item
+                      a.header-list-submenu-submenu__link(href="#") Фумигация
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Блог
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Отзывы
+                li.header-list-submenu__item
+                  a.header-list-submenu__link(href="#") Акции
+
+  include popup-menu

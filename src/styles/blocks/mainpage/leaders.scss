@@ -7,6 +7,9 @@
   &__bot {
     padding: 7.2rem 3.2rem;
     border-bottom: 0.3rem solid var(--black-line);
+    @include w1200 {
+      padding: 7.2rem 0;
+    }
   }
   &__btn {
     display: flex;

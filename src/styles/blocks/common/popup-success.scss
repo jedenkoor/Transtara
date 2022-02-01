@@ -1,0 +1,81 @@
+.popup-success {
+  width: 49.6rem;
+  padding: 5.2rem 7.2rem 7.2rem;
+  @include w1023 {
+    width: 45.4rem;
+  }
+  @include w767 {
+    width: 100%;
+    padding: 4.3rem 3.2rem 5.2rem;
+  }
+  & > .carousel__button.is-close {
+    width: 4rem;
+    height: 4rem;
+    top: 5.2rem;
+    right: 7.2rem;
+    @include w767 {
+      top: 3.6rem;
+      right: 3.2rem;
+    }
+    svg {
+      color: var(--black-line);
+      filter: none;
+    }
+  }
+  &__title {
+    margin-bottom: 7.4rem;
+    font-weight: 600;
+    font-size: 2.4rem;
+    color: var(--black-text);
+    @include w767 {
+      margin-bottom: 5.9rem;
+      font-size: 2rem;
+    }
+  }
+  &__block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7.2rem;
+    @include w767 {
+      margin-bottom: 5.2rem;
+    }
+    svg {
+      flex-shrink: 0;
+      width: 7.2rem;
+      height: 7.2rem;
+      margin-right: 2.4rem;
+      color: var(--orange);
+      @include w767 {
+        width: 5.6rem;
+        height: 5.6rem;
+      }
+    }
+  }
+  &__subtitle {
+    font-weight: 600;
+    color: var(--black-text);
+  }
+  &__text {
+    max-width: 21rem;
+    color: var(--silver);
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.8rem 0;
+    @include w767 {
+      padding: 1rem 0;
+    }
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}

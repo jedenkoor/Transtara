@@ -1,0 +1,389 @@
+.reviews {
+  &__text {
+    max-width: 77.6rem;
+    margin-bottom: 7.2rem;
+    @include w767 {
+      margin-bottom: 5.2rem;
+    }
+  }
+  &__wrap {
+    display: flex;
+    @include w1023 {
+      position: relative;
+      justify-content: space-between;
+      padding-bottom: 11.2rem;
+    }
+    @include w767 {
+      flex-direction: column;
+      padding-bottom: 0;
+    }
+    .pagination {
+      @include w1023 {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      @include w767 {
+        position: static;
+        transform: none;
+      }
+    }
+  }
+  &__content {
+    flex: 1;
+    @include w1023 {
+      flex: 0 0 calc(50% - 1.8rem);
+      width: calc(50% - 1.8rem);
+    }
+    @include w767 {
+      flex: auto;
+      width: auto;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5.2rem 9.3%;
+    padding-left: 0;
+    list-style: none;
+    @include w1200 {
+      grid-gap: 5.2rem 3.6rem;
+    }
+    @include w1023 {
+      grid-template-columns: 100%;
+      grid-gap: 5.2rem;
+    }
+    @include w767 {
+      grid-gap: 3.6rem;
+    }
+  }
+  &__item {
+    display: flex;
+    padding: 3.2rem;
+    background: var(--background-card);
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.12);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    &:not(.reviews__item--full) {
+      @include hover {
+        &:hover,
+        &:focus {
+          box-shadow: none;
+          .reviews-item__name {
+            color: var(--blue);
+          }
+          .reviews-item__btn {
+            background: var(--blue);
+            color: var(--background);
+          }
+        }
+        &:active {
+          box-shadow: none;
+          .reviews-item__name {
+            color: var(--blue);
+          }
+          .reviews-item__btn {
+            background: var(--blue-click);
+            color: var(--background);
+          }
+        }
+      }
+      @include active {
+        &:active {
+          box-shadow: none;
+          .reviews-item__name {
+            color: var(--blue);
+          }
+          .reviews-item__btn {
+            background: var(--blue-click);
+            color: var(--background);
+          }
+        }
+      }
+    }
+    &--active {
+      box-shadow: none;
+      .reviews-item__name {
+        color: var(--blue);
+      }
+      .reviews-item__btn {
+        background: var(--blue);
+        color: var(--background);
+        .show {
+          display: none;
+        }
+        .hide {
+          display: block;
+        }
+      }
+    }
+    &--full {
+      position: relative;
+      grid-column: 1/3;
+      margin-top: -1.2rem;
+      padding: 3.2rem 0;
+      cursor: default;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+      border-bottom: 0.1rem solid var(--blue);
+      @include w1023 {
+        grid-column: auto;
+      }
+      @include w767 {
+        margin-top: 0.5rem;
+        padding: 2.4rem 0;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        height: 2.5rem;
+        background: url('../images/reviews-arrow-left.svg') left center/auto no-repeat;
+      }
+      .reviews-item__text {
+        display: block;
+      }
+    }
+    &--right {
+      &:before {
+        background: url('../images/reviews-arrow-right.svg') center/auto no-repeat;
+        @include w1023 {
+          background: url('../images/reviews-arrow-left.svg') left center/auto no-repeat;
+        }
+      }
+    }
+  }
+  &-item {
+    &__text {
+      display: none;
+    }
+    &__col {
+      display: flex;
+      flex-direction: column;
+      &:first-of-type {
+        align-items: center;
+        flex-shrink: 0;
+      }
+      &:last-child {
+        flex: 1;
+        margin-left: 3.2rem;
+      }
+    }
+    &__ava {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-bottom: auto;
+      border-radius: 50%;
+    }
+    &__rate {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 2.4rem;
+      color: var(--blue);
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-left: 0.5rem;
+      }
+    }
+    &__name {
+      margin-bottom: 0;
+      font-weight: 600;
+      @include w767 {
+        line-height: 1.71;
+      }
+    }
+    &__date {
+      margin-bottom: 1.6rem;
+      color: var(--grey-text);
+      @include w767 {
+        margin-bottom: 2rem;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: auto;
+      padding: 0.8rem 0;
+      transition: 0.2s;
+      @include hover {
+        &:focus {
+          background: var(--blue);
+          color: var(--background);
+        }
+        &:active {
+          background: var(--blue-click);
+          color: var(--background);
+        }
+      }
+      @include active {
+        &:active {
+          background: var(--blue-click);
+          color: var(--background);
+        }
+      }
+      @include w767 {
+        padding: 1rem 0;
+      }
+      .hide {
+        display: none;
+      }
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-left: 1rem;
+        @include w767 {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 29.3%;
+    margin-left: 6.05%;
+    @include w1200 {
+      flex: 0 0 calc((100% - 7.2rem) / 3);
+      margin-left: 3.6rem;
+    }
+    @include w1023 {
+      flex: 0 0 calc(50% - 1.8rem);
+      width: calc(50% - 1.8rem);
+      margin-left: 0;
+    }
+    @include w767 {
+      flex: auto;
+      width: auto;
+      order: -1;
+      margin-bottom: 5.2rem;
+    }
+  }
+  &-aside {
+    &__block {
+      position: sticky;
+      top: 10rem;
+      padding: 3.2rem;
+      background: var(--background-card);
+      border-radius: 0.8rem;
+    }
+    &__sort {
+      margin-bottom: 2.4rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 0.1rem solid var(--black-line);
+      &:before {
+        background: var(--background-card);
+      }
+    }
+    &__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.4rem;
+      @include w767 {
+        margin-bottom: 2.1rem;
+      }
+    }
+    &__title {
+      font-weight: 500;
+      font-size: 2.4rem;
+      @include w1200 {
+        font-size: 2rem;
+      }
+      @include w1023 {
+        font-size: 2.4rem;
+      }
+      @include w767 {
+        font-size: 2rem;
+      }
+    }
+    &__link {
+      display: flex;
+      align-items: center;
+      color: var(--blue);
+      font-weight: 500;
+      @include hover {
+        &:hover,
+        &:focus {
+          color: var(--blue-hover);
+        }
+        &:active {
+          color: var(--blue-click);
+        }
+      }
+      @include active {
+        &:active {
+          color: var(--blue-click);
+        }
+      }
+      svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-left: 1rem;
+        @include w767 {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+    &__list {
+      padding-left: 0;
+      list-style: none;
+    }
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 2.3rem;
+      background: var(--background);
+      border: 0.1rem solid var(--platinum);
+      border-radius: 0.4rem;
+      @include w767 {
+        padding: 0.9rem 2.3rem;
+      }
+      &[data-rate='5']:before {
+        background: url('../images/stars-5.svg') center/contain no-repeat;
+      }
+      &[data-rate='4']:before {
+        background: url('../images/stars-4.svg') center/contain no-repeat;
+      }
+      &[data-rate='3']:before {
+        background: url('../images/stars-3.svg') center/contain no-repeat;
+      }
+      &[data-rate='2']:before {
+        background: url('../images/stars-2.svg') center/contain no-repeat;
+      }
+      &[data-rate='1']:before {
+        background: url('../images/stars-1.svg') center/contain no-repeat;
+      }
+      &:before {
+        content: '';
+        width: 8rem;
+        height: 1.6rem;
+      }
+      &:after {
+        content: attr(data-percent);
+        font-weight: 500;
+        font-size: 1.6rem;
+        color: var(--grey-text);
+        @include w767 {
+          font-size: 1.4rem;
+          line-height: 1.43;
+        }
+      }
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+    }
+  }
+}

@@ -3,11 +3,18 @@
     margin-bottom: 7rem;
     padding-bottom: 5.2rem;
     border-bottom: 0.3rem solid var(--black-line);
+    @include w767 {
+      margin-bottom: 5rem;
+      padding-bottom: 3.6rem;
+    }
   }
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 47%);
     grid-gap: 6%;
+    @include w1023 {
+      display: block;
+    }
   }
   &__col {
     padding-left: 0;
@@ -52,10 +59,20 @@
           color: var(--orange-click);
         }
       }
+      @include w767 {
+        padding: 1.9rem 2.4rem 1.85rem;
+        line-height: 1.71;
+      }
       svg {
+        flex-shrink: 0;
         width: 2.4rem;
         height: 2.4rem;
+        margin-left: 3rem;
         transition: transform 0.2s;
+        @include w767 {
+          width: 2rem;
+          height: 2rem;
+        }
       }
     }
     &__content {
@@ -65,6 +82,9 @@
       opacity: 0;
       margin-bottom: 0;
       padding: 0 3.2rem;
+      @include w767 {
+        padding: 0 2.4rem;
+      }
     }
   }
 }

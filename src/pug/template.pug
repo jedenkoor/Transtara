@@ -29,10 +29,10 @@ html(lang="ru")
     meta(name="msapplication-TileColor" content="#ffffff")
     meta(name="theme-color" content="#ffffff")
 
-  body(style="opacity=0")
+  body(style="opacity:0")
     style.
-      * {
-          transition=none!important;
+      *:not(body) {
+          transition: none!important;
       }
     .sprite
       include includes/svg-sprite
@@ -42,6 +42,7 @@ html(lang="ru")
         - if (breadcrumbs)
           include includes/breadcrumbs
         block content
-
-      include includes/popup-buy
+        include includes/popup-buy
+        include includes/popup-callback
+        include includes/popup-success
       include includes/footer
