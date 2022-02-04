@@ -53,10 +53,12 @@ class Init {
         init: () => {
           const mobileMenuBtn = document.querySelector('.header__menu--wrap')
           mobileMenuBtn.classList.add('active')
+          document.querySelector('.header').classList.add('menu')
         },
         closing: () => {
           const mobileMenuBtn = document.querySelector('.header__menu--wrap')
           mobileMenuBtn.classList.remove('active')
+          document.querySelector('.header').classList.remove('menu')
         }
       }
     })
@@ -65,11 +67,13 @@ class Init {
       dragToClose: false,
       mainClass: 'popup__wrap',
       keyboard: false,
+      autoFocus: false,
       showClass: 'fancybox-fadeIn',
       hideClass: 'fancybox-fadeOut'
     })
 
     this.actions().initPhoneMask()
+    this.actions().showPopups()
 
     if (document.querySelectorAll('.info__reviews').length) {
       const reviewsSliders = document.querySelectorAll('.info__reviews')
@@ -79,8 +83,8 @@ class Init {
     }
 
     if (document.querySelectorAll('.goodpage__gallery').length) {
-      const reviewsSliders = document.querySelectorAll('.goodpage__gallery')
-      reviewsSliders.forEach((item) => {
+      const goodpageSliders = document.querySelectorAll('.goodpage__gallery')
+      goodpageSliders.forEach((item) => {
         this.actions().initGoodpageSlider(item)
       })
     }
@@ -103,6 +107,13 @@ class Init {
       const selects = document.querySelectorAll('select')
       selects.forEach((item) => {
         this.actions().initSelects(item)
+      })
+    }
+
+    if (document.querySelectorAll('.leaders__slider').length && document.documentElement.clientWidth < 768) {
+      const leadersSliders = document.querySelectorAll('.leaders__slider')
+      leadersSliders.forEach((item) => {
+        this.actions().initLeadersSlider(item)
       })
     }
   }
@@ -204,6 +215,14 @@ class Init {
       item.addEventListener('change', function () {
         _this.actions().toggleClearFilter(this)
         _this.actions().checkCategory(this)
+      })
+    })
+
+    const mobileFilterInputs = document.querySelectorAll('.popup-filters-item__label input')
+    mobileFilterInputs.forEach((item) => {
+      item.addEventListener('change', function () {
+        _this.actions().toggleClearMobFilter(this)
+        _this.actions().checkMobileCategory(this)
       })
     })
 
@@ -328,6 +347,12 @@ class Init {
         _this.actions().closePopupMenuSubmenu(this)
       })
     })
+
+    document.addEventListener('click', (e) => {
+      if (e.target === document.querySelector('.fancybox__content') || e.target.closest('.fancybox__content') !== null) {
+        _this.actions().removeFocusPopup(e)
+      }
+    })
   }
 
   actions() {
@@ -335,6 +360,17 @@ class Init {
       showBody() {
         document.querySelector('body style').remove()
         document.querySelector('body').style.opacity = 1
+      },
+      showPopups() {
+        setTimeout(() => {
+          const popups = document.querySelectorAll('.popup')
+          popups.forEach((item) => {
+            item.style.position = 'relative'
+            item.style.opacity = 1
+            item.style.visibility = 'visible'
+            item.style.display = 'none'
+          })
+        }, 1000)
       },
       handleScroll() {
         if (this.scrollTimer) {
@@ -488,6 +524,34 @@ class Init {
             }
           }))()
       },
+      initLeadersSlider(el) {
+        const prevArr = el.querySelector('.goodpage-gallery__arr--prev')
+        const nextArr = el.querySelector('.goodpage-gallery__arr--next')
+        const pagination = el.querySelector('.goodpage-gallery__pagination')
+        ;(() =>
+          new Swiper(el, {
+            resistanceRatio: 0,
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            navigation: {
+              prevEl: prevArr,
+              nextEl: nextArr
+            },
+            pagination: {
+              el: pagination,
+              type: 'fraction'
+            },
+            on: {
+              transitionEnd: function (swiper) {
+                const swiperLinks = el.querySelectorAll('a')
+                swiperLinks[swiper.previousIndex].setAttribute('tabIndex', '-1')
+                swiperLinks[swiper.activeIndex].removeAttribute('tabIndex')
+              }
+            }
+          }))()
+      },
       initGoodpageSlider(el) {
         const prevArr = el.querySelector('.goodpage-gallery__arr--prev')
         const nextArr = el.querySelector('.goodpage-gallery__arr--next')
@@ -547,17 +611,26 @@ class Init {
       initHideText(el) {
         const text = el.querySelector('.hidetext__text')
         const btn = el.querySelector('.hidetext__btn')
-        if (text.offsetHeight > 192) {
-          text.setAttribute('data-height', text.offsetHeight)
-          text.style.height = '192px'
-          btn.classList.add('hidetext__btn--active')
+        if (document.documentElement.clientWidth > 1200) {
+          if (text.offsetHeight > 192) {
+            text.setAttribute('data-height', text.offsetHeight)
+            text.style.height = '192px'
+            btn.classList.add('hidetext__btn--active')
+          }
+        } else {
+          if (text.offsetHeight > 120) {
+            text.setAttribute('data-height', text.offsetHeight)
+            text.style.height = '120px'
+            btn.classList.add('hidetext__btn--active')
+          }
         }
       },
       toggleHideText(el) {
         const container = el.closest('.hidetext')
         const text = container.querySelector('.hidetext__text')
+        const winW = document.documentElement.clientWidth
         if (el.classList.contains('hidetext__btn--less')) {
-          text.style.height = '192px'
+          text.style.height = winW > 1200 ? '192px' : '120px'
         } else {
           text.style.height = `${text.getAttribute('data-height')}px`
         }
@@ -574,6 +647,12 @@ class Init {
           document.activeElement.blur()
         }, 100)
       },
+      removeFocusPopup(el) {
+        const targetsArr = ['A', 'INPUT', 'BUTTON', 'LABEL']
+        if (!targetsArr.includes(el.target.nodeName) && el.target.children.length) {
+          document.activeElement.blur()
+        }
+      },
       toggleClearFilter(el) {
         const form = el.closest('form')
         const clear = form.querySelector('.catalog-filters__clear')
@@ -585,6 +664,28 @@ class Init {
           }
         })
         clear.disabled = flagDisabled
+      },
+      toggleClearMobFilter(el) {
+        const form = el.closest('form')
+        const clear = form.querySelector('.popup-filters__btn--clear')
+        const submit = form.querySelector('.popup-filters__btn--submit')
+        const close = form.querySelector('.popup-filters__btn--close')
+        const inputs = form.querySelectorAll('input')
+        let flagChanged = false
+        inputs.forEach((item) => {
+          if (item.checked) {
+            flagChanged = true
+          }
+        })
+        if (flagChanged) {
+          close.classList.remove('active')
+          clear.classList.add('active')
+          submit.classList.add('active')
+        } else {
+          clear.classList.remove('active')
+          submit.classList.remove('active')
+          close.classList.add('active')
+        }
       },
       checkCategory(el) {
         const category = el.closest('.catalog-filters__item')
@@ -600,6 +701,21 @@ class Init {
           name.classList.add('active')
         } else {
           name.classList.remove('active')
+        }
+      },
+      checkMobileCategory(el) {
+        const category = el.closest('.popup-filters__item')
+        const inputs = category.querySelectorAll('input')
+        let flagActive = false
+        inputs.forEach((item) => {
+          if (item.checked) {
+            flagActive = true
+          }
+        })
+        if (flagActive) {
+          category.classList.add('checked')
+        } else {
+          category.classList.remove('checked')
         }
       },
       inputNum(el) {
@@ -666,7 +782,7 @@ class Init {
 
           el.classList.add('reviews__item--active')
           el.querySelector('.reviews-item__btn span').innerText = 'Скрыть'
-          if (Array.from(reviews).indexOf(el) % 2 === 0 && document.documentElement.clientWidth > 1024) {
+          if (Array.from(reviews).indexOf(el) % 2 === 0 && document.documentElement.clientWidth > 1023) {
             el.nextElementSibling.insertAdjacentHTML(
               'afterend',
               `

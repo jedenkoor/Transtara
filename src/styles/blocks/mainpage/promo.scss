@@ -1,24 +1,42 @@
 .promo {
+  &__wrap {
+    position: relative;
+    background: linear-gradient(90deg, #ebebeb 0%, #f9f9f9 100%);
+    border-radius: 0.8rem;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
   &__content {
+    position: relative;
     height: 50rem;
     padding: 4.4rem 7.2rem 7.2rem;
     border-radius: 0.8rem;
-    background-color: var(--background-card);
-    background-position: left center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
-    @include w1200 {
-      background-position: -13rem center;
+    box-shadow: 0 0.8rem 2.2rem rgba(0, 0, 0, 0.12);
+    @include w767 {
+      height: 63rem;
+      padding: 4.4rem 2.4rem 5.2rem;
     }
   }
-  &__wrap {
+  &__main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 38rem;
     height: 100%;
     margin-left: auto;
+    @include w1023 {
+      max-width: 39.6rem;
+    }
+    @include w767 {
+      max-width: none;
+    }
   }
   &__tag {
     display: inline-block;
@@ -28,6 +46,10 @@
     border-radius: 0.8rem;
     font-weight: 500;
     color: var(--background);
+    @include w767 {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
   }
   &__title {
     position: relative;
@@ -40,6 +62,9 @@
       width: 22.8rem;
       height: 0.3rem;
       background-color: var(--black-text);
+      @include w767 {
+        width: 14.1rem;
+      }
     }
   }
   &__descr {
@@ -47,6 +72,11 @@
     font-size: 2rem;
     line-height: 1.6;
     color: var(--grey-text);
+    @include w767 {
+      margin-bottom: 2.4rem;
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
   }
   &__btns {
     display: flex;
@@ -55,13 +85,25 @@
     display: flex;
     align-items: center;
     padding: 0.8rem 2rem;
+    @include w767 {
+      padding: 1rem 2rem;
+    }
     &:not(:last-child) {
       margin-right: 2.4rem;
+    }
+    &.secondary-btn {
+      @include w767 {
+        display: none;
+      }
     }
     svg {
       width: 2.4rem;
       height: 2.4rem;
       margin-left: 1rem;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 }

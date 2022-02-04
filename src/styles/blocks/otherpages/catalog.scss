@@ -4,6 +4,17 @@
     grid-template-columns: repeat(3, 29.3%);
     grid-gap: calc((100% - 87.9%) / 2);
     margin-bottom: 5.2rem;
+    @include w1200 {
+      grid-template-columns: repeat(3, calc((100% - 7.2rem) / 3));
+      grid-gap: 3.6rem;
+    }
+    @include w767 {
+      grid-template-columns: 100%;
+      grid-gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 0.3rem solid var(--platinum);
+    }
   }
   &__link {
     position: relative;
@@ -61,11 +72,30 @@
       transition: color 0.2s;
     }
   }
+  &__mobfilters {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5.3rem;
+    padding: 0.8rem 0;
+    @include w1200 {
+      display: flex;
+    }
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 1rem;
+    }
+  }
   &__filters {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 5.3rem;
+    @include w1200 {
+      display: none;
+    }
   }
   &-filters {
     &__list {
@@ -290,6 +320,14 @@
     @include w1200 {
       grid-template-columns: repeat(3, calc((100% - 7.2rem) / 3));
       grid-gap: 5.6rem 3.6rem;
+    }
+    @include w1023 {
+      grid-template-columns: repeat(2, calc((100% - 3.6rem) / 2));
+      grid-gap: 6.6rem 3.6rem;
+    }
+    @include w767 {
+      grid-template-columns: 100%;
+      grid-gap: 3.6rem;
     }
   }
 }

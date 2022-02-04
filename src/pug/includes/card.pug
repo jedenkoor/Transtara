@@ -1,4 +1,4 @@
-li.card
+li.card.swiper-slide
   a.card__link(href="#")
     picture.card__picture
       source(srcset="/static/images/card1.webp" type="image/webp")
@@ -19,21 +19,3 @@ li.card
       span 99 999₽
       | / шт.
     button.btn.secondary-btn.card__buy(data-fancybox data-src="#buy-popup") Купить
-
-li.card
-  a.card__link(href="#")
-    picture.card__picture
-      source(srcset="/static/images/card2.webp" type="image/webp")
-      img.card__img(src="/static/images/card2.png" alt="Поддон с обвязкой")
-    .card__top
-      .card__info
-        svg
-          use(xlink:href="#card-size")
-        | 1200×1000
-      .card__info
-        svg
-          use(xlink:href="#card-weight")
-        | 700 кг
-    p.card__name Поддон с обвязкой
-  .card__bot
-    button.btn.secondary-btn.card__buy(data-fancybox data-src="#buy-popup") Запросить стоимость

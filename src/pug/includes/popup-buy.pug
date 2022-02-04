@@ -1,4 +1,4 @@
-.popup.popup-buy#buy-popup(style="display: none")
+.popup.popup-buy#buy-popup(style="position: absolute; opacity: 0; visibility: hidden;")
   .popup-buy__content
     .popup-buy__colwrap
       .popup-buy__col
@@ -92,10 +92,10 @@
         .goodpage-info__line
         .popup-buy__row
           label.popup-buy__receiving
-            input(type="radio" name="receiving" value="delivery" checked)
+            input.visually-hidden(type="radio" name="receiving" value="delivery" checked)
             span Доставка
           label.popup-buy__receiving
-            input(type="radio" name="receiving" value="pickup")
+            input.visually-hidden(type="radio" name="receiving" value="pickup")
             span Самовывоз
         .popup-buy__pickup(style="display: none" data-label="Адрес")
           select
@@ -109,6 +109,6 @@
               span.star *
         button.btn.primary-btn.popup-buy__btn(type="submit" data-validate) Готово
         label.callback__label
-          input.input-ok(type="checkbox" checked  data-type="checkbox" data-required)
+          input.input-ok.visually-hidden(type="checkbox" checked  data-type="checkbox" data-required)
           span Даю согласие на
             a(href="#") обработку персональных данных

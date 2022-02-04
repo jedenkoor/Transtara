@@ -8,6 +8,13 @@
     counter-reset: info;
     @include w1200 {
       grid-template-columns: repeat(3, calc((100% - 7.2rem) / 3));
+      grid-gap: 5.2rem 3.6rem;
+    }
+    @include w1023 {
+      grid-template-columns: repeat(2, calc((100% - 3.6rem) / 2));
+    }
+    @include w767 {
+      grid-template-columns: 100%;
       grid-gap: 3.6rem;
     }
     &:before {
@@ -18,6 +25,23 @@
       top: 9.2rem;
       width: 47.9%;
       border-top: 0.3rem dashed var(--orange);
+      @include w1200 {
+        left: 31.8%;
+      }
+      @include w1023 {
+        right: 2.4rem;
+        left: auto;
+        width: 48.9%;
+      }
+      @include w767 {
+        top: clamp(27.8rem, calc(27.8rem + 1.8 * (100vw - 36rem) / 40.8), 29.6rem);
+        right: 50%;
+        transform: translateX(50%);
+        width: 0;
+        height: 6.8rem;
+        border-top: none;
+        border-right: 0.3rem dashed var(--orange);
+      }
     }
   }
   &__item {
@@ -25,6 +49,9 @@
     padding: 2.2rem 3.2rem 3.2rem;
     background: var(--background-card);
     border-radius: 0.8rem;
+    @include w767 {
+      padding: 3.2rem;
+    }
     &:before {
       counter-increment: info;
       content: '0' counter(info);
@@ -49,12 +76,36 @@
         height: 4.8rem;
         font-size: 2rem;
       }
+      @include w1023 {
+        top: -3.6rem;
+        right: -0.1rem;
+        width: 7.2rem;
+        height: 7.2rem;
+        padding-left: 1.3rem;
+        border-radius: 7.2rem 0 0 7.2rem;
+        font-size: 2.4rem;
+      }
+      @include w767 {
+        top: -2.8rem;
+        width: 5.6rem;
+        height: 5.6rem;
+        padding-left: 1rem;
+        font-size: 2rem;
+      }
     }
     &:first-child {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 6.9rem 0 5.2rem;
+      @include w1023 {
+        padding-top: 5.6rem;
+        padding-bottom: 5.5rem;
+      }
+      @include w767 {
+        padding-top: 5.3rem;
+        padding-bottom: 5rem;
+      }
       &:after {
         content: '';
         position: absolute;
@@ -68,7 +119,36 @@
         pointer-events: none;
       }
     }
+    &:nth-child(2) {
+      &:after {
+        @include w1023 {
+          content: '';
+          position: absolute;
+          z-index: 2;
+          top: 9.2rem;
+          right: 0;
+          width: 0;
+          height: calc(100% + 5.2rem);
+          border-right: 0.3rem dashed var(--orange);
+        }
+        @include w767 {
+          top: 8.2rem;
+          right: auto;
+          left: 0;
+          width: 50%;
+          height: calc(100% + 3.7rem);
+          border: 0.3rem dashed var(--orange);
+          border-right: none;
+        }
+      }
+    }
     &:nth-child(3) {
+      @include w1023 {
+        order: 2;
+      }
+      @include w767 {
+        order: inherit;
+      }
       &:after {
         content: '';
         position: absolute;
@@ -80,14 +160,40 @@
         border: 0.3rem dashed var(--orange);
         border-left: none;
         pointer-events: none;
+        @include w1023 {
+          width: 165%;
+          height: 0;
+          border: none;
+          border-top: 0.3rem dashed var(--orange);
+        }
+        @include w767 {
+          top: 8.2rem;
+          width: 50%;
+          height: calc(100% + 3.7rem);
+          border: 0.3rem dashed var(--orange);
+          border-left: none;
+        }
       }
     }
     &:nth-child(4) {
       order: 1;
+      @include w767 {
+        order: inherit;
+      }
     }
     &--reviews {
       grid-column: 1 / 3;
       padding: 3.2rem 5.2rem 5.2rem;
+      @include w1023 {
+        order: 3;
+      }
+      @include w767 {
+        grid-column: auto;
+        width: calc(100% + 3rem);
+        margin-bottom: 6.4rem;
+        margin-left: -1.5rem;
+        padding: 2.6rem 1.5rem 3.2rem;
+      }
       &:before {
         display: none;
       }
@@ -95,17 +201,30 @@
   }
   &__title {
     margin-bottom: 0;
+    @include w767 {
+      margin-bottom: 2.3rem;
+    }
   }
   &__btn {
     width: calc(100% - 10.4rem);
     margin-top: auto;
     padding: 0.8rem 0;
+    @include w1023 {
+      width: calc(100% - 9.4rem);
+    }
+    @include w767 {
+      width: calc(100% - 6.4rem);
+      padding: 1rem 0;
+    }
   }
   &__subtext {
     margin-top: 1.6rem;
     margin-bottom: 1.6rem;
     font-weight: 500;
     color: var(--grey-text);
+    @include w767 {
+      margin-top: 1.2rem;
+    }
   }
   &__phone {
     font-weight: 500;
@@ -124,6 +243,9 @@
         color: var(--orange-click);
       }
     }
+    @include w767 {
+      font-size: 2rem;
+    }
   }
   &__icon {
     position: relative;
@@ -137,9 +259,21 @@
     border-radius: 50%;
     border: 0.3rem dashed var(--orange);
     background-color: var(--background-card);
+    @include w1023 {
+      margin-bottom: 1.2rem;
+    }
+    @include w767 {
+      margin-bottom: 2.4rem;
+      width: 10rem;
+      height: 10rem;
+    }
     svg {
       width: 7.2rem;
       height: 7.2rem;
+      @include w767 {
+        width: 5.6rem;
+        height: 5.6rem;
+      }
     }
   }
   &__subtitle {
@@ -147,5 +281,9 @@
     margin-bottom: 2.4rem;
     font-weight: 500;
     font-size: 2.4rem;
+    @include w767 {
+      margin-bottom: 2.1rem;
+      font-size: 2rem;
+    }
   }
 }

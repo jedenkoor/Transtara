@@ -39,7 +39,7 @@
       grid-gap: 5.2rem 3.6rem;
     }
     @include w767 {
-      grid-template-columns: auto;
+      grid-template-columns: 100%;
       grid-gap: 3.6rem;
     }
   }

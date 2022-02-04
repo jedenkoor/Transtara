@@ -3,12 +3,46 @@
     margin-bottom: 7.7rem;
     padding-bottom: 5.2rem;
     border-bottom: 0.3rem solid var(--black-line);
+    @include w1023 {
+      margin-bottom: 8.6rem;
+    }
+    @include w767 {
+      margin-bottom: 7.7rem;
+      padding-bottom: 3.6rem;
+    }
+  }
+  &__slider {
+    @include w767 {
+      padding-bottom: 7.6rem;
+    }
+  }
+  .catalog__list {
+    @include w767 {
+      display: flex;
+    }
+  }
+  .goodpage-gallery {
+    &__arr {
+      display: none;
+      @include w767 {
+        display: flex;
+      }
+    }
+    &__pagination {
+      display: none;
+      @include w767 {
+        display: block;
+      }
+    }
   }
   &__bot {
     padding: 7.2rem 3.2rem;
     border-bottom: 0.3rem solid var(--black-line);
     @include w1200 {
       padding: 7.2rem 0;
+    }
+    @include w767 {
+      padding: 3.6rem 0 5.2rem;
     }
   }
   &__btn {
@@ -17,10 +51,17 @@
     justify-content: center;
     width: 100%;
     padding: 0.8rem 0;
+    @include w767 {
+      padding: 1rem 0;
+    }
     svg {
       width: 2.4rem;
       height: 2.4rem;
       margin-right: 1rem;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 }

@@ -4,10 +4,15 @@
   top: -10.1rem;
   margin-bottom: 3rem;
   @include w767 {
+    top: 0;
     margin-bottom: 1rem;
     background: var(--background);
+    transition: box-shadow 0.2s;
   }
   &.nosearch {
+    @include w767 {
+      box-shadow: 0 0 3.2rem rgba(0, 0, 0, 0.2);
+    }
     .header-search__wrap {
       opacity: 0 !important;
     }
@@ -38,6 +43,9 @@
     .header-search__label {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
+  }
+  &.menu {
+    box-shadow: 0 0 3.2rem transparent;
   }
   &__search {
     position: absolute;
@@ -247,6 +255,9 @@
       }
       & + .header-info__phone {
         margin-left: 1.4rem;
+        @include w1023 {
+          margin-left: 0;
+        }
       }
     }
     &__phone {
@@ -275,8 +286,7 @@
       margin-left: 2.5rem;
       padding: 0.8rem 2rem;
       @include w1023 {
-        padding: 0.8rem 1rem;
-        margin-left: 2.2rem;
+        margin-left: 2rem;
       }
       @include w767 {
         padding: 1rem;
@@ -302,7 +312,7 @@
       margin-left: 2.4rem;
       transition: 0.2s;
       @include w1023 {
-        margin-left: 2.3rem;
+        margin-left: 2rem;
       }
       @include w767 {
         display: none;

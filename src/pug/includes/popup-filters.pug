@@ -1,0 +1,106 @@
+form.popup.popup-filters#filters-popup(style="position: absolute; opacity: 0; visibility: hidden;")
+  .popup-filters__title Фильтры
+  .popup-filters__wrap
+    ul.popup-filters__list
+      li.popup-filters__item.popup-filters-item.accordion
+        button.popup-filters-item__title.accordion-btn
+          svg
+            use(xlink:href="#filter-categories")
+          | Категория
+          svg
+            use(xlink:href="#accordion-arrow")
+        .popup-filters-item__content.accordion-content
+          ul.popup-filters-item__list
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="1")
+                span Деревянные поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="2")
+                span Пластиковые поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+      li.popup-filters__item.popup-filters-item.accordion
+        button.popup-filters-item__title.accordion-btn
+          svg
+            use(xlink:href="#filter-categories")
+          | Категория
+          svg
+            use(xlink:href="#accordion-arrow")
+        .popup-filters-item__content.accordion-content
+          ul.popup-filters-item__list
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="1")
+                span Деревянные поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="2")
+                span Пластиковые поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+      li.popup-filters__item.popup-filters-item.accordion
+        button.popup-filters-item__title.accordion-btn
+          svg
+            use(xlink:href="#filter-categories")
+          | Категория
+          svg
+            use(xlink:href="#accordion-arrow")
+        .popup-filters-item__content.accordion-content
+          ul.popup-filters-item__list
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="1")
+                span Деревянные поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="2")
+                span Пластиковые поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+      li.popup-filters__item.popup-filters-item.accordion
+        button.popup-filters-item__title.accordion-btn
+          svg
+            use(xlink:href="#filter-categories")
+          | Категория
+          svg
+            use(xlink:href="#accordion-arrow")
+        .popup-filters-item__content.accordion-content
+          ul.popup-filters-item__list
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="1")
+                span Деревянные поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="2")
+                span Пластиковые поддоны
+            li.popup-filters-item__item
+              label.popup-filters-item__label
+                input.visually-hidden(type="checkbox" name="categories" value="3")
+                span Поддоны ГОСТ
+  button.btn.primary-btn.popup-filters__btn.popup-filters__btn--submit
+    | Применить
+  button.btn.secondary-btn.popup-filters__btn.popup-filters__btn--clear
+    svg
+      use(xlink:href="#filter-clear")
+    | Очистить фильтр
+  button.btn.secondary-btn.popup-filters__btn.popup-filters__btn--close.active(data-fancybox-close)
+    svg
+      use(xlink:href="#search-close")
+    | Закрыть

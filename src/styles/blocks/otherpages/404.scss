@@ -2,23 +2,53 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 7.2rem 13.6rem 0 7.6rem;
+    @include w1023 {
+      padding: 7.2rem 2.4rem 0;
+    }
+    @include w767 {
+      padding: 6.2rem 1.5rem 0;
+    }
   }
   &__col {
-    > svg {
-      width: 24rem;
-      height: 24rem;
-      color: var(--platinum);
+    &:last-child {
+      display: flex;
+      @include w767 {
+        display: none;
+      }
+      svg {
+        width: 24rem;
+        height: 24rem;
+        color: var(--platinum);
+        @include w1023 {
+          width: 21.6rem;
+          height: 21.6rem;
+        }
+      }
     }
   }
   &__title {
     display: flex;
     align-items: center;
+    @include w359 {
+      font-size: 2.3rem;
+    }
     svg {
       width: 5.2rem;
       height: 5.2rem;
       margin-right: 2.4rem;
       color: var(--orange);
+      @include w767 {
+        width: 3.6rem;
+        height: 3.6rem;
+        margin-right: 1.6rem;
+      }
+      @include w359 {
+        width: 3.2rem;
+        height: 3.2rem;
+        margin-right: 1rem;
+      }
     }
   }
   &__text {
@@ -29,10 +59,17 @@
     align-items: center;
     width: max-content;
     padding: 0.8rem 2rem;
+    @include w767 {
+      padding: 1rem 2rem;
+    }
     svg {
       width: 2.4rem;
       height: 2.4rem;
       margin-right: 1rem;
+      @include w767 {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 }

@@ -1,12 +1,41 @@
 .hidetext {
+  &__pseudotitle {
+    @include w767 {
+      display: none;
+    }
+    &--tablet {
+      display: none;
+      @include w767 {
+        display: block;
+      }
+    }
+  }
   &__container {
     display: flex;
     align-items: flex-start;
+    @include w767 {
+      flex-direction: column;
+    }
+    .title {
+      @include w1023 {
+        margin-bottom: 2.4rem;
+      }
+    }
   }
   &__col {
     &:last-child {
       flex: 0 0 29.3%;
       margin-left: 6.05%;
+      @include w1200 {
+        flex: 0 0 calc((100% - 7.2rem) / 3);
+        margin-left: 3.6rem;
+      }
+      @include w767 {
+        order: -1;
+        flex: auto;
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
   &__text {
@@ -14,6 +43,12 @@
     display: block;
     overflow: hidden;
     transition: height 0.3s;
+    @include w1023 {
+      margin-bottom: 2rem;
+    }
+    @include w767 {
+      margin-bottom: 1.7rem;
+    }
   }
   &__btn {
     display: none;
@@ -62,8 +97,12 @@
   &__picture {
     position: relative;
     display: block;
-    height: 35.2rem;
+    padding-bottom: 100%;
     filter: drop-shadow(0 0.8rem 3.2rem rgba(0, 0, 0, 0.12));
+    @include w767 {
+      margin-bottom: 3.6rem;
+      padding-bottom: 0;
+    }
   }
   &__img {
     position: absolute;
@@ -73,5 +112,8 @@
     height: 100%;
     object-fit: cover;
     border-radius: 0.8rem;
+    @include w767 {
+      position: static;
+    }
   }
 }

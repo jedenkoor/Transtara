@@ -15,8 +15,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     open: true,
     watchFiles: ['src/*', 'src/**/*'],
-    allowedHosts: 'all'
-    // host: '0.0.0.0'
+    allowedHosts: 'all',
+    host: '0.0.0.0'
   },
 
   entry: {

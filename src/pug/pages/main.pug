@@ -6,18 +6,26 @@ block variables
 block content
   section.banner.margin-section
     .container
-      .banner__content(style="background: url('/static/images/banner.png') center right/contain no-repeat, linear-gradient(90deg, #f9f9f9 0%, #ebebeb 100%)")
-        h1.title.banner__title Продажа б/у паллетов, паллетных бортов и крышек
-        p.banner__descr В Москве и Московской области.
-        .banner__btns
-          a.btn.primary-btn.banner__btn(href="#")
-            svg
-              use(xlink:href="#banner-catalog")
-            | Посмотреть каталог
-          a.btn.secondary-btn.banner__btn(href="#")
-            svg
-              use(xlink:href="#banner-info")
-            | Как заказать?
+      .banner__wrap
+        picture.banner__picture
+          source(srcset="/static/images/banner-mobile.png" media="(max-width: 767px)" type="image/webp")
+          source(srcset="/static/images/banner-mobile.png" media="(max-width: 767px)" type="image/png")
+          source(srcset="/static/images/banner-tablet.png" media="(max-width: 1200px)" type="image/webp")
+          source(srcset="/static/images/banner-tablet.png" media="(max-width: 1200px)" type="image/png")
+          source(srcset="/static/images/banner.png" type="image/webp")
+          img.banner__img(src="/static/images/banner.png" alt="Продажа б/у паллетов, паллетных бортов и крышек")
+        .banner__content
+          h1.title.banner__title Продажа б/у паллетов, паллетных бортов и крышек
+          p.banner__descr В Москве и Московской области.
+          .banner__btns
+            a.btn.primary-btn.banner__btn(href="#")
+              svg
+                use(xlink:href="#banner-catalog")
+              | Посмотреть каталог
+            a.btn.secondary-btn.banner__btn(href="#")
+              svg
+                use(xlink:href="#banner-info")
+              | Как заказать?
 
   section.categories.margin-section
     ul.container.categories__list
@@ -54,16 +62,24 @@ block content
 
   section.promo.margin-section
     .container
-      .promo__content(style="background-image: url('/static/images/promo.png')")
-        .promo__wrap
-          span.promo__tag Акция
-          h2.title.promo__title Скидка на поддоны при вывозе старых
-          p.promo__descr Заберем старые паллеты или борта и дадим скидку.
-          .promo__btns
-            a.btn.tertiary-btn.promo__btn(href="#") Подробнее
-              svg
-                use(xlink:href="#promo-arrow")
-            a.btn.secondary-btn.promo__btn(href="#") Скупка поддонов
+      .promo__wrap
+        picture.promo__picture
+          source(srcset="/static/images/promo-mobile.png" media="(max-width: 767px)" type="image/webp")
+          source(srcset="/static/images/promo-mobile.png" media="(max-width: 767px)" type="image/png")
+          source(srcset="/static/images/promo-tablet.png" media="(max-width: 1200px)" type="image/webp")
+          source(srcset="/static/images/promo-tablet.png" media="(max-width: 1200px)" type="image/png")
+          source(srcset="/static/images/promo.png" type="image/webp")
+          img.promo__img(src="/static/images/promo.png" alt="Скидка на поддоны при вывозе старых")
+        .promo__content
+          .promo__main
+            span.promo__tag Акция
+            h2.title.promo__title Скидка на поддоны при вывозе старых
+            p.promo__descr Заберем старые паллеты или борта и дадим скидку.
+            .promo__btns
+              a.btn.tertiary-btn.promo__btn(href="#") Подробнее
+                svg
+                  use(xlink:href="#promo-arrow")
+              a.btn.secondary-btn.promo__btn(href="#") Скупка поддонов
 
   section.benefits.margin-section
     ul.container.benefits__list
@@ -89,9 +105,17 @@ block content
   section.leaders.margin-section
     .container
       h2.title.leaders__title Лидеры продаж
-      ul.catalog__list
-        - for (var i = 0; i < 3; i++)
-          include ../includes/card.pug
+      .swiper.leaders__slider
+        ul.swiper-wrapper.catalog__list
+          - for (var i = 0; i < 6; i++)
+            include ../includes/card.pug
+        button.btn.secondary-btn.goodpage-gallery__arr.goodpage-gallery__arr--prev
+          svg
+            use(xlink:href="#slider-prev")
+        button.btn.secondary-btn.goodpage-gallery__arr.goodpage-gallery__arr--next
+          svg
+            use(xlink:href="#slider-next")
+        .goodpage-gallery__pagination
       .leaders__bot
         a.btn.primary-btn.leaders__btn(href="#")
           svg

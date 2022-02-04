@@ -1,8 +1,3 @@
-//body.compensate-for-scrollbar {
-//  .fancybox__slide {
-//    padding-right: 1.7rem;
-//  }
-//}
 .popup-menu {
   flex: 1;
   width: 100%;
@@ -116,7 +111,8 @@
       justify-content: center;
       padding: 0.8rem;
       color: var(--black-line);
-      transition: color 0.2s;
+      transition: 0.2s;
+      border-radius: 0.4rem;
       @include hover {
         &:hover,
         &:focus {
@@ -129,6 +125,44 @@
       @include active {
         &:active {
           color: var(--orange-click);
+        }
+      }
+      &--whatsapp {
+        @include hover {
+          &:hover,
+          &:focus {
+            color: var(--background);
+            background: #25d366;
+          }
+          &:active {
+            color: var(--background);
+            background: #1a9447;
+          }
+        }
+        @include active {
+          &:active {
+            color: var(--background);
+            background: #1a9447;
+          }
+        }
+      }
+      &--viber {
+        @include hover {
+          &:hover,
+          &:focus {
+            color: var(--background);
+            background: #7360f2;
+          }
+          &:active {
+            color: var(--background);
+            background: #5547b3;
+          }
+        }
+        @include active {
+          &:active {
+            color: var(--background);
+            background: #5547b3;
+          }
         }
       }
       svg {

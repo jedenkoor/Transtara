@@ -6,18 +6,21 @@ block variables
 
 block content
   section.hidetext.margin-section
-    .container.hidetext__container
-      .hidetext__col
-        h1.title О нас
-        .hidetext__text
-          p Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить) Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить)
-        button.hidetext__btn(data-more="Показать больше" data-less="Показать меньше")
-          svg
-            use(xlink:href="#hidetext-arrow")
-      .hidetext__col
-        picture.hidetext__picture
-          source(srcset="/static/images/about.jpg" type="image/webp")
-          img.hidetext__img(src="/static/images/about.jpg" alt="О нас")
+    .container
+      h1.visually-hidden О нас
+      .title.hidetext__pseudotitle.hidetext__pseudotitle--tablet О нас
+      .hidetext__container
+        .hidetext__col
+          .title.hidetext__pseudotitle О нас
+          .hidetext__text
+            p Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить) Вот вам яркий пример современных тенденций - разбавленное изрядной долей эмпатии, рациональное мышление создаёт предпосылки для существующих финансовых и административных условий. В своём стремлении улучшить пользовательский опыт мы упускаем, что базовые сценарии поведения пользователей, инициированные исключительно синтетически, превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: высокотехнологичная концепция общественного уклада предполагает независимые способы реализации системы массового участия! (пример текста, необходимо заменить) лей целевой аудитории является четким доказательством пия! (пример текста, необходимо заменить)
+          button.hidetext__btn(data-more="Показать больше" data-less="Показать меньше")
+            svg
+              use(xlink:href="#hidetext-arrow")
+        .hidetext__col
+          picture.hidetext__picture
+            source(srcset="/static/images/about.jpg" type="image/webp")
+            img.hidetext__img(src="/static/images/about.jpg" alt="О нас")
 
   section.mission.margin-section
     .container
@@ -60,53 +63,49 @@ block content
     .container
       h2.title.history__title История компании
       .history__list
-        .history__row
-          .history__item.history-item(data-year="1999")
-            .history-item__wrap
-              h3.history-item__title Начало деятельности
-              .history-item__text
-                p Мы начали искать новый уникальный подход при оптовой продажи. Разработали стратегии, которым сделуем по сей день.
-          .history__item.history-item(data-year="2012")
-            .history-item__wrap
-              h3.history-item__title Регистрация в РФ
-              .history-item__text
-                p Зарегистрирована компания «Транстара», вобравшая в тебя весь опыт и знания предыдущих лет.
-          .history__item.history__item--picture.history-item
-            picture.history-item__picture
-              source(srcset="/static/images/about.jpg" type="image/webp")
-              img.history-item__img(src="/static/images/about.jpg" alt="История компании")
-        .history__row
-          .history__item.history__item--picture.history-item
-            picture.history-item__picture
-              source(srcset="/static/images/about.jpg" type="image/webp")
-              img.history-item__img(src="/static/images/about.jpg" alt="История компании")
-          .history__item.history-item(data-year="2013" style="grid-column: 3 / 4")
-            .history-item__wrap
-              h3.history-item__title Грандиозное открытие собственного склада
-              .history-item__text
-                p Мы приобрели склад в Московской области площадью 7000 кв.м, что позволяет вместить в себя свыше 130 000 паллетов и ускорить доставку до клиента.
-        .history__row
-          .history__item.history-item(data-year="2017" style="grid-column: 1 / 2")
-            .history-item__wrap
-              h3.history-item__title Расширение компании
-              .history-item__text
-                p Увеличили штат компании с 10 человек до 50. Расширили возможности автопарка, увеличив его с 3 до 10 единиц техники.
-          .history__item.history-item(data-year="2015")
-            .history-item__wrap
-              h3.history-item__title Более миллиона поддонов в год
-              .history-item__text
-                p Достигли значимого оборота товара свыше 1 000 000 единиц в год и продолжаем расти.
-        .history__row
-          .history__item.history-item(data-year="2020" style="grid-column: 2 / 3")
-            .history-item__wrap
-              h3.history-item__title Пандемия
-              .history-item__text
-                p В сложное время для людей и всего Мира мы сохраняли человечность. Помогаем сотрудникам оставаться здоровы, даже если это в ущерб себе.
-          .history__item.history-item(data-year="Сейчас")
-            .history-item__wrap
-              h3.history-item__title Движемся вперед, не забывая о прошлом
-              .history-item__text
-                p Помня все, что с нами было и бережно храня уроки прошлого, мы можем уверенно идти вперед.
+        .history__item.history-item(data-year="1999")
+          .history-item__wrap
+            h3.history-item__title Начало деятельности
+            .history-item__text
+              p Мы начали искать новый уникальный подход при оптовой продажи. Разработали стратегии, которым сделуем по сей день.
+        .history__item.history-item(data-year="2012")
+          .history-item__wrap
+            h3.history-item__title Регистрация в РФ
+            .history-item__text
+              p Зарегистрирована компания «Транстара», вобравшая в тебя весь опыт и знания предыдущих лет.
+        .history__item.history__item--picture.history-item
+          picture.history-item__picture
+            source(srcset="/static/images/about.jpg" type="image/webp")
+            img.history-item__img(src="/static/images/about.jpg" alt="История компании")
+        .history__item.history__item--picture.history-item
+          picture.history-item__picture
+            source(srcset="/static/images/about.jpg" type="image/webp")
+            img.history-item__img(src="/static/images/about.jpg" alt="История компании")
+        .history__item.history-item(data-year="2013")
+          .history-item__wrap
+            h3.history-item__title Грандиозное открытие собственного склада
+            .history-item__text
+              p Мы приобрели склад в Московской области площадью 7000 кв.м, что позволяет вместить в себя свыше 130 000 паллетов и ускорить доставку до клиента.
+        .history__item.history-item(data-year="2017")
+          .history-item__wrap
+            h3.history-item__title Расширение компании
+            .history-item__text
+              p Увеличили штат компании с 10 человек до 50. Расширили возможности автопарка, увеличив его с 3 до 10 единиц техники.
+        .history__item.history-item(data-year="2015")
+          .history-item__wrap
+            h3.history-item__title Более миллиона поддонов в год
+            .history-item__text
+              p Достигли значимого оборота товара свыше 1 000 000 единиц в год и продолжаем расти.
+        .history__item.history-item(data-year="2020")
+          .history-item__wrap
+            h3.history-item__title Пандемия
+            .history-item__text
+              p В сложное время для людей и всего Мира мы сохраняли человечность. Помогаем сотрудникам оставаться здоровы, даже если это в ущерб себе.
+        .history__item.history-item(data-year="Сейчас")
+          .history-item__wrap
+            h3.history-item__title Движемся вперед, не забывая о прошлом
+            .history-item__text
+              p Помня все, что с нами было и бережно храня уроки прошлого, мы можем уверенно идти вперед.
 
   include ../includes/fag
   include ../includes/callback

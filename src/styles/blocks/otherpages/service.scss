@@ -18,9 +18,16 @@
   }
   &__main {
     .service__callback {
-      display: none;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      margin-top: -2.4rem;
       @include w1023 {
         display: block;
+        height: auto;
+        padding: 2.4rem 3.2rem 3.2rem;
+        overflow: visible;
+        margin-top: 12rem;
       }
     }
   }
@@ -29,7 +36,7 @@
     flex-direction: column;
     flex: 0 0 29.3%;
     margin-left: 6.05%;
-    @media screen and (max-width: 1200px) {
+    @include w1200 {
       flex: 0 0 calc((100% - 7.2rem) / 3);
       margin-left: 3.6rem;
     }

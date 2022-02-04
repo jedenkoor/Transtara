@@ -1,4 +1,4 @@
-.popup.popup-menu#menu-popup(style="display: none")
+.popup.popup-menu#menu-popup(style="position: absolute; opacity: 0; visibility: hidden;")
   .popup-menu__row
     .header-info__col
       .header-info__row
@@ -57,11 +57,11 @@
         svg
           use(xlink:href="#instagram")
     li.popup-menu-socials__item
-      a.popup-menu-socials__link(href="#")
+      a.popup-menu-socials__link.popup-menu-socials__link--whatsapp(href="#")
         svg
           use(xlink:href="#whatsapp")
     li.popup-menu-socials__item
-      a.popup-menu-socials__link(href="#")
+      a.popup-menu-socials__link.popup-menu-socials__link--viber(href="#")
         svg
           use(xlink:href="#viber")
   button.btn.secondary-btn.popup-menu__close(data-fancybox-close)
