@@ -10,6 +10,9 @@
     display: none;
   }
   .header-info {
+    &__name {
+      margin-right: 1rem;
+    }
     &__col,
     &__name {
       display: block;
